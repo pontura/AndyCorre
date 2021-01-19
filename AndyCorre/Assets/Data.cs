@@ -9,9 +9,9 @@ public class Data : MonoBehaviour
     const string PREFAB_PATH = "Data";
     static Data mInstance = null;
     public bool DEBUG;
-    public string lastScene;
-    public string newScene;
-    private float time_ViewingMap = 7.5f;
+    string lastScene;
+    string newScene;
+    public Settings settings;
 
     public static Data Instance
     {
@@ -50,7 +50,11 @@ public class Data : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
-
+        settings = GetComponent<Settings>();
         DontDestroyOnLoad(this);
+    }
+    private void Start()
+    {
+        
     }
 }
