@@ -20,11 +20,13 @@ public class InputManager : MonoBehaviour
         {
             lastFoot = 1;
             character.Step();
+            Events.OnKeyPressed("Z");
         }
         else if (Input.GetKeyDown(KeyCode.X) && lastFoot != 2)
         {
             lastFoot = 2;
             character.Step();
+            Events.OnKeyPressed("X");
         }
         Vector2 mousePos = Input.mousePosition;
         mousePos.x -= Screen.width / 2;
