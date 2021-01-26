@@ -12,6 +12,5 @@ public class ActivableButton : MonoBehaviour
     public void OnActive()
     {
         anim.Play();
-        print("si");
     }
 }

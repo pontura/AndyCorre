@@ -746,6 +746,11 @@ MonoBehaviour:
   runSignal_to_add: {fileID: 5665670144684302834, guid: 9f7dedfdd74ca4248b8eca09f8e06a16,
     type: 3}
   container: {fileID: 1579671381}
+  disparatorSignalsData: []
+  all: []
+  disparadorID: 0
+  signalID: 0
+  state: 0
 --- !u!114 &547028193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1684,90 +1689,256 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45831d652dd5ffb4bb45e21a5804e96b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationFactor: 0.2
+  rotationFactor: 0.3
   signalsSeparationY: 0.1
   runSignalSettings:
-    distance_z: 6
-    distance_to_ignore: 6
-    distance_to_remove: 12
-    rotationFreeze: 0.5
+    distance_z: 3
+    distance_to_ignore: 4
+    distance_to_remove: 8
+    rotationFreeze: 0.15
   viewDistance: 50
+  rotationToActive: 0.2
+  multiplechoiceSpeed: 0.5
+  disparatoresData:
+  - id: 0
+    isDisparador: 0
+    disparador_id: 0
+    distance: 35
+    text: Ese caballo quiere decirme algo
+    sprite: {fileID: 21300000, guid: a7247e9dd2ce64c4499c3ad79925988a, type: 3}
+    pos: {x: 2, y: 0}
+    multiplechoice: []
+  - id: 1
+    isDisparador: 0
+    disparador_id: 0
+    distance: 36
+    text: "\xBFVolver a trabajar?"
+    sprite: {fileID: 0}
+    pos: {x: -2, y: 0}
+    multiplechoice: []
+  - id: 2
+    isDisparador: 0
+    disparador_id: 0
+    distance: 45
+    text: "\xBFTodav\xEDa despierta?"
+    sprite: {fileID: 21300000, guid: f17cb5a3de157d54382fb543f19db60b, type: 3}
+    pos: {x: -2, y: 0}
+    multiplechoice: []
   allSignalsData:
   - id: 0
-    distance: 80
-    text: "Mam\xE1,  como te extra\xF1o..."
-    sprite: {fileID: 21300000, guid: f17cb5a3de157d54382fb543f19db60b, type: 3}
-    pos: {x: 2, y: 0}
-  - id: 0
-    distance: 50
-    text: "Todas las cosas que me qued\xE9 sin decirte..."
-    sprite: {fileID: 0}
-    pos: {x: 2, y: 0}
-  - id: 0
-    distance: 50
-    text: "El d\xEDa que me llevaste al campo"
-    sprite: {fileID: 0}
-    pos: {x: 2, y: 0}
-  - id: 0
-    distance: 50
-    text: "Te acord\xE1s?"
-    sprite: {fileID: 0}
-    pos: {x: 2, y: 0}
-  - id: 0
-    distance: 35
-    text: "Yo no quer\xEDa ir al principio"
-    sprite: {fileID: 0}
-    pos: {x: 2, y: 0}
-  - id: 0
+    isDisparador: 0
+    disparador_id: 0
     distance: 25
-    text: "Quer\xEDa jugar a la Play con Marce"
+    text: "Ve\xEDamos mucha tele juntas. \xBFQu\xE9 m\xE1s pod\xEDamos hacer juntas
+      tanto tiempo?"
     sprite: {fileID: 0}
-    pos: {x: 2, y: 0}
-  - id: 0
+    pos: {x: 0, y: 0}
+    multiplechoice: []
+  - id: 1
+    isDisparador: 0
+    disparador_id: 0
     distance: 25
-    text: "Que tarada, ten\xEDas raz\xF3n..."
+    text: "Mam\xE1 ped\xEDa documentales sobre animales. \"Pero tranquilitos\". "
     sprite: {fileID: 0}
-    pos: {x: 2, y: 0}
-  - id: 0
+    pos: {x: 0, y: 0}
+    multiplechoice: []
+  - id: 2
+    isDisparador: 0
+    disparador_id: 0
     distance: 25
-    text: Es que Marce me gustaba me acuerdo...
+    text: No le gustaba ver escenas sangrientas de caza.
     sprite: {fileID: 0}
-    pos: {x: 2, y: 0}
-  - id: 0
+    pos: {x: 0, y: 0}
+    multiplechoice: []
+  - id: 3
+    isDisparador: 0
+    disparador_id: 0
     distance: 25
-    text: "Que pibito m\xE1s raro ese..."
+    text: "En sus \xFAltimos d\xEDas, cre\xEDa que los animales estaban ah\xED con
+      ella."
     sprite: {fileID: 0}
-    pos: {x: 2, y: 0}
-  - id: 0
-    distance: 15
-    text: Nunca lo vi sonreir, creo...
-    sprite: {fileID: 0}
-    pos: {x: 2, y: 0}
-  - id: 1
-    distance: 50
-    text: El viaje a Uruguay las dos solas...
-    sprite: {fileID: 0}
-    pos: {x: -2, y: 0}
-  - id: 1
-    distance: 50
-    text: Increible que hayamos llegado...
-    sprite: {fileID: 0}
-    pos: {x: -2, y: 0}
-  - id: 1
-    distance: 40
-    text: "en esa coup\xE9 C\xE9lica del abuelo!"
-    sprite: {fileID: 0}
-    pos: {x: -2, y: 0}
-  - id: 1
+    pos: {x: 0, y: 0}
+    multiplechoice: []
+  - id: 4
+    isDisparador: 0
+    disparador_id: 0
     distance: 25
-    text: cremita... que linda! el olor al cuero de los asientos...
+    text: "Quer\xEDa levantarse a tocarlos. Dec\xEDa que ellos le hablaban."
     sprite: {fileID: 0}
-    pos: {x: -2, y: 0}
+    pos: {x: 0, y: 0}
+    multiplechoice:
+    - goto_id: 101
+      text: "A la yegua gris le oy\xF3 murmurar..."
+    - goto_id: 201
+      text: "El perrito no pod\xEDa creer..."
+    - goto_id: 301
+      text: "Lo que el buitre pregunt\xF3 fue..."
+  - id: 0
+    isDisparador: 0
+    disparador_id: 1
+    distance: 25
+    text: En la cuenta queda poco dinero.
+    sprite: {fileID: 0}
+    pos: {x: 0, y: 0}
+    multiplechoice: []
   - id: 1
-    distance: 15
-    text: "Recalentaba... ten\xEDamos que parar cada 50 km!"
+    isDisparador: 0
+    disparador_id: 1
+    distance: 25
+    text: "Dejaron de depositar su jubilaci\xF3n este mes. Igual, apenas alcanzaba."
     sprite: {fileID: 0}
-    pos: {x: -2, y: 0}
+    pos: {x: 0, y: 0}
+    multiplechoice: []
+  - id: 2
+    isDisparador: 0
+    disparador_id: 1
+    distance: 25
+    text: "Tengo que terminar esa traducci\xF3n, pero no puedo concentrarme."
+    sprite: {fileID: 0}
+    pos: {x: 0, y: 0}
+    multiplechoice: []
+  - id: 3
+    isDisparador: 0
+    disparador_id: 1
+    distance: 25
+    text: "H\xE9ctor llam\xF3 de nuevo por la entrevista de trabajo..."
+    sprite: {fileID: 0}
+    pos: {x: 0, y: 0}
+    multiplechoice:
+    - goto_id: 1101
+      text: Es demasiado pronto para ver gente.
+    - goto_id: 1201
+      text: "Deber\xEDa intentarlo. "
+    - goto_id: 1301
+      text: No estoy segura de que sea buena idea.
+  - id: 101
+    isDisparador: 0
+    disparador_id: 0
+    distance: 25
+    text: De vez en cuando me gusta que abracen mi cuello.
+    sprite: {fileID: 0}
+    pos: {x: 0, y: 0}
+    multiplechoice: []
+  - id: 201
+    isDisparador: 0
+    disparador_id: 0
+    distance: 25
+    text: "Que estuvieran ah\xED encerrados cuando afuera hab\xEDa semejante solazo."
+    sprite: {fileID: 0}
+    pos: {x: 0, y: 0}
+    multiplechoice: []
+  - id: 301
+    isDisparador: 0
+    disparador_id: 0
+    distance: 25
+    text: "\xBFYa elegiste con qu\xE9 vestido te vas a despedir? "
+    sprite: {fileID: 0}
+    pos: {x: 0, y: 0}
+    multiplechoice: []
+  - id: 1101
+    isDisparador: 0
+    disparador_id: 1
+    distance: 25
+    text: mmm...
+    sprite: {fileID: 0}
+    pos: {x: 0, y: 0}
+    multiplechoice: []
+  - id: 1201
+    isDisparador: 0
+    disparador_id: 1
+    distance: 25
+    text: mmm...
+    sprite: {fileID: 0}
+    pos: {x: 0, y: 0}
+    multiplechoice: []
+  - id: 1301
+    isDisparador: 0
+    disparador_id: 1
+    distance: 25
+    text: mmm...
+    sprite: {fileID: 0}
+    pos: {x: 0, y: 0}
+    multiplechoice: []
+  - id: 0
+    isDisparador: 0
+    disparador_id: 2
+    distance: 25
+    text: "Mam\xE1 volv\xEDa siempre muy tarde de su trabajo, a la madrugada."
+    sprite: {fileID: 0}
+    pos: {x: 0, y: 0}
+    multiplechoice: []
+  - id: 1
+    isDisparador: 0
+    disparador_id: 2
+    distance: 25
+    text: "A veces yo me despertaba antes de que llegue y no pod\xEDa..."
+    sprite: {fileID: 0}
+    pos: {x: 0, y: 0}
+    multiplechoice: []
+  - id: 2
+    isDisparador: 0
+    disparador_id: 2
+    distance: 25
+    text: ...volverme a dormir. Entonces la esperaba.
+    sprite: {fileID: 0}
+    pos: {x: 0, y: 0}
+    multiplechoice: []
+  - id: 3
+    isDisparador: 0
+    disparador_id: 2
+    distance: 25
+    text: "Cuando ella entraba a casa y me ve\xEDa, siempre me hac\xEDa el mismo
+      chiste."
+    sprite: {fileID: 0}
+    pos: {x: 0, y: 0}
+    multiplechoice: []
+  - id: 4
+    isDisparador: 0
+    disparador_id: 2
+    distance: 25
+    text: "\"\xBFYa despierta? \xBFO todav\xEDa?\""
+    sprite: {fileID: 0}
+    pos: {x: 0, y: 0}
+    multiplechoice:
+    - goto_id: 2101
+      text: Hay un momento para hacer las cosas...
+    - goto_id: 2201
+      text: Hizo chistes hasta el final...
+    - goto_id: 2103
+      text: "Sigo despert\xE1ndome a la noche..."
+  - id: 2101
+    isDisparador: 0
+    disparador_id: 2
+    distance: 25
+    text: "Pero solo dura algunos d\xEDas. Y m\xE1s tarde es imposible. "
+    sprite: {fileID: 0}
+    pos: {x: 0, y: 0}
+    multiplechoice: []
+  - id: 2102
+    isDisparador: 0
+    disparador_id: 2
+    distance: 25
+    text: "Solo queda la sensaci\xF3n in\xFAtil de que podr\xEDa haber ocurrido algo."
+    sprite: {fileID: 0}
+    pos: {x: 0, y: 0}
+    multiplechoice: []
+  - id: 2201
+    isDisparador: 0
+    disparador_id: 2
+    distance: 25
+    text: Era como si aquello le estuviera pasando a otra persona.
+    sprite: {fileID: 0}
+    pos: {x: 0, y: 0}
+    multiplechoice: []
+  - id: 2301
+    isDisparador: 0
+    disparador_id: 2
+    distance: 25
+    text: "Y me pregunto si todav\xEDa est\xE1 ac\xE1, viviendo conmigo. O si ya
+      se fue. La duda dura pocos segundos."
+    sprite: {fileID: 0}
+    pos: {x: 0, y: 0}
+    multiplechoice: []
 --- !u!114 &1157530507
 MonoBehaviour:
   m_ObjectHideFlags: 0

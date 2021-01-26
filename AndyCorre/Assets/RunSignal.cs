@@ -9,9 +9,13 @@ public class RunSignal : MonoBehaviour
     public Text field;
     public Image image;
     Settings.RunSignalSettings settings;
-    Settings.SignalData data;
+    public Settings.SignalData data;
     RunSignalsManager manager;
     public states state;
+    public GameObject view_multiplechoice;
+    public RunMultiplechoiceButton mButton;
+    public Canvas canvas;
+
     public enum states
     {
         IDLE,
@@ -20,8 +24,20 @@ public class RunSignal : MonoBehaviour
 
     public void Init(RunSignalsManager manager, Settings.SignalData data)
     {
-        settings = Data.Instance.settings.runSignalSettings;
+        canvas.worldCamera = Game.Instance.Character.cam;
         this.data = data;
+        if (data.multiplechoice.Length > 0)
+        {
+            foreach(Settings.SignalDataMultipleContent d in data.multiplechoice)
+            {
+                RunMultiplechoiceButton button = Instantiate(mButton);
+                button.transform.SetParent(view_multiplechoice.transform);
+                button.Init(this, d);
+            }                
+        }
+
+        settings = Data.Instance.settings.runSignalSettings;
+        
         this.manager = manager;
         target = Game.Instance.Character.cam.transform;
         field.text = data.text;
@@ -29,15 +45,27 @@ public class RunSignal : MonoBehaviour
             image.enabled = false;
         else
             image.sprite = data.sprite;
+       
     }
-    void Update()
+
+    public void SetOff()
+    {
+        //print("SET OFF");
+        if (state == states.DONE)
+            return;
+        state = states.DONE;
+        manager.RemoveSignal(this);
+    }
+    public void OnUpdate()
     {
         Vector3 pos = transform.position;
        
         if (state == states.DONE)
         {
             if (pos.z + settings.distance_to_remove < target.transform.position.z)
+            {
                 Destroy(this.gameObject);
+            }
             return;
         }
             
@@ -47,11 +75,10 @@ public class RunSignal : MonoBehaviour
         pos.z = Mathf.Lerp(pos.z, target.transform.position.z+ settings.distance_z, Time.deltaTime * (cam_rotation/ settings.rotationFreeze));
         pos.y = target.transform.position.y + data.pos.y - 2;
         transform.position = pos;
+    }
 
-        if (pos.z + settings.distance_to_ignore < target.transform.position.z)
-        {
-            state = states.DONE;
-            manager.RemoveSignal(this);
-        }
+    public void Clicked(Settings.SignalDataMultipleContent content)
+    {
+        manager.MultiplechoiceSelected(content);
     }
 }
