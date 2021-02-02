@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class RunSignal : MonoBehaviour
 {
+    Transform container;
     Transform target;
     public Text field;
     public Image image;
@@ -19,14 +20,17 @@ public class RunSignal : MonoBehaviour
     public enum states
     {
         IDLE,
-        DONE
+        ON,
+        DONE        
     }
 
     public void Init(RunSignalsManager manager, Settings.SignalData data)
     {
+        container = transform.parent;
+        SetCanvasAlpha(0.5f);
         canvas.worldCamera = Game.Instance.Character.cam;
         this.data = data;
-        if (data.multiplechoice.Length > 0)
+        if (data.multiplechoice != null && data.multiplechoice.Length > 0)
         {
             foreach(Settings.SignalDataMultipleContent d in data.multiplechoice)
             {
@@ -47,33 +51,50 @@ public class RunSignal : MonoBehaviour
             image.sprite = data.sprite;
        
     }
+    public void SetOn()
+    {
+        state = states.ON;
+        SetCanvasAlpha(1);
 
+    }
+    void SetCanvasAlpha(float value)
+    {
+        canvas.GetComponent<CanvasGroup>().alpha = value;
+    }
+    bool animOff;
+    public void SetAnimOff()
+    {
+        if (animOff) return;
+        
+        animOff = true;
+        canvas.GetComponent<Animation>().Play();
+    }
     public void SetOff()
     {
-        //print("SET OFF");
         if (state == states.DONE)
             return;
+        transform.SetParent(container);
         state = states.DONE;
-        manager.RemoveSignal(this);
+        SetAnimOff();
+        Invoke("DestroyedDelay", 1);
+    }
+    void DestroyedDelay()
+    {
+        Destroy(this.gameObject);
     }
     public void OnUpdate()
     {
         Vector3 pos = transform.position;
-       
-        if (state == states.DONE)
-        {
-            if (pos.z + settings.distance_to_remove < target.transform.position.z)
-            {
-                Destroy(this.gameObject);
-            }
-            return;
-        }
-            
+
         transform.LookAt(target);
         float cam_rotation = Mathf.Abs(target.transform.rotation.y);
-       
-        pos.z = Mathf.Lerp(pos.z, target.transform.position.z+ settings.distance_z, Time.deltaTime * (cam_rotation/ settings.rotationFreeze));
-        pos.y = target.transform.position.y + data.pos.y - 2;
+
+        if (state == states.ON)
+        {
+              pos.z = Mathf.Lerp(pos.z, target.transform.position.z + settings.distance_z, Time.deltaTime * (cam_rotation / settings.rotationFreeze));
+        }
+        pos.y = target.transform.position.y -1 - (Game.Instance.Character.cam.transform.parent.transform.localPosition.y/50);
+
         transform.position = pos;
     }
 

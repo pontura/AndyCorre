@@ -1,0 +1,172 @@
+{
+   "all":[
+      {
+         "distance":25,
+         "text":"Ese caballo quiere decirme algo",
+         "sprite_url":"",
+         "pos_x":2,
+         "content":[
+            {"text":"Veíamos mucha tele juntas. ¿Qué más podíamos hacer juntas tanto tiempo?"},
+            {"text":"Mamá pedía documentales sobre animales. 'Pero tranquilitos'"},
+			{"text":"No le gustaba ver escenas sangrientas de caza."},
+			{"text": "En sus últimos días, creía que los animales estaban ahí con ella."},
+			{"text": "Quería levantarse a tocarlos. Decía que ellos le hablaban."},
+            {
+               "multiplechoice":[
+                  {
+                     "text":"A la yegua gris le oyó murmurar...",
+                     "goto_id":10
+                  },
+                  {
+                     "text":"El perrito no podía creer...",
+                     "goto_id":20
+                  },
+                  {
+                     "text":"Lo que el buitre preguntó fue...",
+                     "goto_id":30
+                  }
+               ]
+            },
+            {
+               "text":"De vez en cuando me gusta que abracen mi cuello.",
+               "id":10
+            },
+            {
+               "text":"Que estuvieran ahí encerrados cuando afuera había semejante solazo.",
+               "id":20
+            },
+            {
+               "text":"¿Ya elegiste con qué vestido te vas a despedir?",
+               "id":30
+            }
+         ]
+      },
+	    {
+         "distance":25,
+         "text":"¿Volver a trabajar?",
+         "sprite_url":"",
+         "pos_x":-2,
+         "content":[
+            { "text":"En la cuenta queda poco dinero."  },
+            { "text":"Dejaron de depositar su jubilación este mes. Igual, apenas alcanzaba."  },
+			{ "text":"Tengo que terminar esa traducción, pero no puedo concentrarme."  },
+			{ "text":"Héctor llamó de nuevo por la entrevista de trabajo..."  },		
+            {
+               "multiplechoice":[
+                  {
+                     "text":"Es demasiado pronto para ver gente.",
+                     "goto_id":10
+                  },
+                  {
+                     "text":"Debería intentarlo.",
+                     "goto_id":20
+                  },
+                  {
+                     "text":"No estoy segura de que sea buena idea.",
+                     "goto_id":30
+                  }
+               ]
+            },
+            {
+               "text":"",
+               "id":10
+            },
+            {
+               "text":"",
+               "id":20
+            },
+            {
+               "text":"No estoy segura de que sea buena idea....",
+               "id":30
+            }
+         ]
+      },
+	  {
+         "distance":25,
+         "text":"¿Todavía despierta?",
+         "sprite_url":"",
+         "pos_x":-2,
+         "content":[
+            { "text":"Mamá volvía siempre muy tarde de su trabajo, a la madrugada."  },
+            { "text":"A veces yo me despertaba antes de que llegue y no podía volverme a dormir. Entonces la esperaba."  },
+			{ "text":"Cuando ella entraba a casa y me veía, siempre me hacía el mismo chiste."  },
+			{ "text":"¿Ya despierta? ¿O todavía?"  },		
+            {
+               "multiplechoice":[
+                  {
+                     "text":"Hay un momento para hacer las cosas...",
+                     "goto_id":10
+                  },
+                  {
+                     "text":"Hizo chistes hasta el final...",
+                     "goto_id":20
+                  },
+                  {
+                     "text":"Sigo despertándome a la noche...",
+                     "goto_id":30
+                  }
+               ]
+            },
+            {
+               "text":"Pero solo dura algunos días. Y más tarde es imposible.",
+               "id":10
+            },
+			 {
+               "text":"Solo queda la sensación inútil de que podría haber ocurrido algo."
+            },
+            {
+               "text":"Era como si aquello le estuviera pasando a otra persona.",
+               "id":20
+            },
+            {
+               "text":"Y me pregunto si todavía está acá, viviendo conmigo.",
+               "id":30
+            },
+			{
+               "text":"O si ya se fue. La duda dura pocos segundos."
+            }
+         ]
+      },
+	  {
+         "distance":25,
+         "text":"Un árbol de peras.",
+         "sprite_url":"",
+         "pos_x":-2,
+         "content":[
+            { "text":"Mi mamá odiaba su cuerpo."  },
+            { "text":"Nunca la escuché decirlo, pero se notaba."  },
+			{ "text":"Nunca se me ocurrió que fuese algo de la vejez."  },
+			{ "text":"Parecía que ese sentimiento había nacido con ella."  },	
+			{"text": "Con frecuencia me decía que le encantaba mi cuerpo." },
+            {
+               "multiplechoice":[
+                  {
+                     "text":"Yo nunca le dí importancia.",
+                     "goto_id":10
+                  },
+                  {
+                     "text":"Solía mejorar mucho mis días.",
+                     "goto_id":20
+                  },
+                  {
+                     "text":"Yo fingía que le creía.",
+                     "goto_id":30
+                  }
+               ]
+            },
+            {
+               "text":"Estaba demasiado ocupada en mantener la beca como para pensar en mi cuerpo.",
+               "id":10
+            },
+			 {
+               "text":"Fui terriblemente insegura, y esas palabras calmaban mi ansiedad como si fuera magia.",
+			   "id":20
+            },
+            {
+               "text":"Había heredado esa costumbre. Nuestros cuerpos se parecían cada vez más a las peras.",
+               "id":30
+            }
+         ]
+      }
+   ]
+}

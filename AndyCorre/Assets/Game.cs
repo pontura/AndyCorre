@@ -27,7 +27,7 @@ public class Game : MonoBehaviour
         if (!mInstance)
             mInstance = this;
     }
-    void Start()
+    public void Init()
     {
         parkManager = GetComponent<ParkManager>();
         runSignalsManager = GetComponent<RunSignalsManager>();

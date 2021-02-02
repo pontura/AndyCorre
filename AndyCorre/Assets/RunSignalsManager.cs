@@ -60,40 +60,64 @@ public class RunSignalsManager : MonoBehaviour
     }
     void CheckAllSignalsState()
     {
-
         float cam_rotation = camTransform.rotation.y;
-
-        RunSignal newDisparador = null;
-        RunSignal signalOff = null;
-        foreach (RunSignal rSignal in all)
-        {
-            if (camTransform.position.z + 4 > rSignal.transform.position.z)
-            {
-                if (!rSignal.data.isDisparador && state == states.NONE)
-                    signalOff = rSignal;
-                else if (Mathf.Abs(cam_rotation) < Data.Instance.settings.rotationToActive || (rSignal.state == RunSignal.states.IDLE && Mathf.Sign(cam_rotation) != Mathf.Sign(rSignal.data.pos.x)))
-                    signalOff = rSignal;
-                else if (state == states.NONE)
-                    newDisparador = rSignal;
-            }
-            rSignal.OnUpdate();
-        }
-        if(signalOff != null)
-            signalOff.SetOff();
-        if (newDisparador != null)
-            SetActiveDisparador(newDisparador);
 
         if (Mathf.Abs(cam_rotation) < Data.Instance.settings.rotationToActive)
         {
+            if (state == states.WAITING)
+                actualSignal = null;
+
+            if(state != states.NONE)
+                RemoveAllActiveSignals();
+
             state = states.NONE;
             if (actualSignal == null)
-            {                
+            {
                 SetNextSignal();
                 nextDistance += viewDistance;
+            } 
+           
+        }
+        bool newDisparador = false;
+        foreach (RunSignal rSignal in all)
+        {
+            rSignal.OnUpdate();
+            bool isNear = IsNear(rSignal);
+            if (isNear)
+            {
+                if (rSignal.state == RunSignal.states.IDLE)
+                {
+                    if (!rSignal.data.isDisparador && state != states.NONE && rSignal.data.disparador_id == disparadorID)
+                        rSignal.SetOn();
+                    else if (rSignal.data.isDisparador && state == states.NONE)
+                    {
+                        if (Mathf.Abs(cam_rotation) > Data.Instance.settings.rotationToActive && Mathf.Sign(cam_rotation) == Mathf.Sign(rSignal.data.pos_x))
+                        {
+                            rSignal.SetOn();
+                            SetActiveDisparador(rSignal);
+                            newDisparador = true;
+                        }
+                    }
+                }
             }
         }
+        if(newDisparador)
+            ResetSignalsFromOtherDisparadores();
     }
-    
+    void ResetSignalsFromOtherDisparadores()
+    {
+        List<RunSignal> all_to_remove = GetAllSignalsOfDisparador(disparadorID, true);
+        foreach (RunSignal rs in all_to_remove)
+        {
+            RemoveSignal(rs);
+        }                
+    }
+    bool IsNear(RunSignal rSignal)
+    {
+        if (camTransform.position.z + 4 > rSignal.transform.position.z)
+            return true;
+        return false;
+    }    
     public void OnUpdate(float distance)
     {
         this.distance = distance;
@@ -111,51 +135,65 @@ public class RunSignalsManager : MonoBehaviour
 
         if (state == states.DISPARADOR && actualSignal.isDisparador)
             return;
-        
-        if (distance + viewDistance > nextDistance)
+
+        float distanceToAppear;
+        if (state == states.NONE)
+            distanceToAppear = distance + viewDistance;
+        else
+            distanceToAppear = distance+5;
+
+
+        if (distanceToAppear > nextDistance)
         {            
             //last_z += actualSignal.distance;
             RunSignal signal = Add();
             pos = signal.transform.position;
-            pos.x = actualSignal.pos.x;
+            pos.x = actualSignal.pos_x;
+            print(pos.x);
             pos.z = nextDistance;
+            pos.y = 1;
             signal.transform.position = pos;
+           
+           // if (!actualSignal.isDisparador)
+             //   posY++;
 
-            if (!actualSignal.isDisparador)
-                posY++;
-
-            print(signalID + " Pos Y: " + posY + " text: " + actualSignal.text);
-
-            actualSignal.pos.y = 1.5f - Data.Instance.settings.signalsSeparationY * posY;
 
             signal.Init(this, actualSignal);
 
             signalID++;
 
-            if (actualSignal.multiplechoice.Length > 0)
+            if (actualSignal.multiplechoice != null && actualSignal.multiplechoice.Length > 0)
                 state = states.WAITING;
-            else
-                SetNextSignal();
+
+            SetNextSignal();
             
         }
     }
+    void RemovePrevoiusSignal()
+    {
+        List<RunSignal> all_to_remove = GetAllSignalsOfDisparador(disparadorID);
+        if (all_to_remove.Count > 0)
+            RemoveSignal(all_to_remove[0]);
+    }
     void SetNextSignal()
     {
+        if (all.Count > 0 && state != states.NONE)
+            RemovePrevoiusSignal();
+
         if (state == states.NONE)
             AddDisparador();
         else if (state == states.DISPARADOR)
             AddSignal();
-        if (actualSignal != null)
-        {
-            nextDistance = distance + actualSignal.distance + viewDistance;
-        }
-        print("SetNextSignal - nextDistance: " + nextDistance + " disparadorID: " + disparadorID + "    SignalID: " + signalID);
+        
+        if(actualSignal != null)
+            print(state + " SetNextSignal - nextDistance: " + nextDistance + " disparadorID: " + disparadorID + "    SignalID: " + signalID + " actual distance: " + actualSignal.distance + " isDisp"  + actualSignal.isDisparador + " actual text: " + actualSignal.text );
     }
     void SetActiveDisparador(RunSignal rs)
-    {        
+    {
+        signalID = 0;
         state = states.DISPARADOR;        
         disparadorID = rs.data.id;
-        ResetAll(rs);
+        //ResetAll(rs);
         SetNewSignals();        
     }
     void SetNewSignals()
@@ -164,21 +202,71 @@ public class RunSignalsManager : MonoBehaviour
         if(disparatorSignalsData.Count >  0)
             actualSignal = disparatorSignalsData[0];
         signalID = 0;
+        AddSignal();
+    }
+    void ForceNewDisparador()
+    {
+        AddDisparador();
+        state = states.NONE;
     }
     void AddSignal()
     {
-        actualSignal = GetNewSignal();
+        Settings.SignalData sData = GetNewSignal();       
+        if (sData == null)
+        {
+            actualSignal = null;
+           // Debug.LogError("TA");
+            print("no hay signal____________state " + state + " diustance: " + distance);
+            //state = states.WAITING;
+            //state = states.NONE;
+            nextDistance = distance + viewDistance;
+            //Invoke("AddDisparador", 2);
+        }
+        else
+        {
+            actualSignal = sData;
+            nextDistance = distance + actualSignal.distance;
+            print(signalID + "NextDistance: " + nextDistance + "   distance: " + distance + " state: " + state);
+        }
     }
     void AddDisparador()
     {
         Reset();
 
         actualSignal = GetNewDisparador();
-        disparadorID = actualSignal.id;        
+        disparadorID = actualSignal.id;
+        nextDistance = distance + actualSignal.distance + viewDistance;
+        print("D_____nextDistance: " + nextDistance + "   distance: " + distance);
     }
-    public void RemoveSignal(RunSignal rs)
+    void RemoveAllActiveSignals()
+    {
+        List<RunSignal> all_to_remove = GetAllSignalsOfDisparador(disparadorID);
+        foreach (RunSignal rs in all_to_remove)
+        {
+            RemoveSignal(rs);
+        }            
+    }
+    List<RunSignal> GetAllSignalsOfDisparador(int _disparadorID, bool notThisDisparador = false)
+    {
+        print("remove all for " + _disparadorID);
+        List<RunSignal> arr = new List<RunSignal>();
+        foreach (RunSignal rs in all)
+        {
+            if(notThisDisparador)
+            {
+                if (rs.data.disparador_id != _disparadorID || (rs.data.isDisparador && rs.data.id != _disparadorID))
+                    arr.Add(rs);
+            }
+            else 
+            if (rs.data.disparador_id == _disparadorID || (rs.data.isDisparador && rs.data.id == _disparadorID))
+                arr.Add(rs);
+        }
+        return arr;
+    }
+    void RemoveSignal(RunSignal rs)
     {
         all.Remove(rs);
+        rs.SetOff();
     }
     RunSignal Add()
     {
@@ -195,8 +283,7 @@ public class RunSignalsManager : MonoBehaviour
     }
     Settings.SignalData GetNewDisparador()
     {
-        print("GetNewDisparador" + disparadorID);
-        signalID = 0;
+        print("GetNewDisparador" + disparadorID + " distance: " + distance);
         int id = 0;
         foreach (Settings.SignalData sd in disparatoresData)
         {
@@ -209,30 +296,18 @@ public class RunSignalsManager : MonoBehaviour
         return disparatoresData[0];
     }
     Settings.SignalData GetNewSignal()
-    {
-       
+    {       
         return GetSignalDataByID(signalID);       
-    }
-    void ResetAll(RunSignal signalDontDestroyable = null)
-    {
-        List<RunSignal> _all = new List<RunSignal>();
-        foreach (RunSignal rs in all)
-        {
-            if (rs != signalDontDestroyable)
-                _all.Add(rs);
-        }
-        foreach (RunSignal rs in _all)
-        {
-            rs.SetOff();
-            //Destroy(rs.gameObject);
-        }
     }
     public void MultiplechoiceSelected(Settings.SignalDataMultipleContent content)
     {
         state = states.DISPARADOR;
-        print("multiplechoice text: " + content.text + " content.goto + " + content.goto_id);
-        ResetAll(all[0]);
-        posY = 0;
+        print("multiplechoice text: " + content.text + " content.goto + " + content.goto_id + " distance: " + distance);
+
+        List<RunSignal> all_to_remove = GetAllSignalsOfDisparador(disparadorID);
+        if(all_to_remove.Count>0)
+            all_to_remove[0].SetAnimOff();
+
         signalID = content.goto_id;
         AddSignal();
     }

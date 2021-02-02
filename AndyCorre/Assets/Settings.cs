@@ -5,6 +5,11 @@ using System;
 
 public class Settings : MonoBehaviour
 {
+    public TextAsset textAsset;
+
+    public float maxSpeed = 10;
+    public float desaceleration = 5;
+
     public float rotationFactor = 0.15f;
     public float signalsSeparationY = 0.5f;
     public RunSignalSettings runSignalSettings;
@@ -16,24 +21,29 @@ public class Settings : MonoBehaviour
     public class RunSignalSettings
     {
         public float distance_z = 6;
-        public float distance_to_ignore = 6;
-        public float distance_to_remove = 12;
         public float rotationFreeze = 0.5f;
     }
     public List<SignalData> disparatoresData;
     public List<SignalData> allSignalsData;
 
+    AllData all;
+    [Serializable]
+    public class AllData
+    {
+        public List<SignalData> all;
+    }
     [Serializable]
     public class SignalData
     {
         public int id;
         [HideInInspector] public bool isDisparador;
         public int disparador_id;
-        public float distance = 50;
+        public float distance;
         public string text;
         public Sprite sprite;
-        public Vector2 pos;
+        public float pos_x;
         public SignalDataMultipleContent[] multiplechoice;
+        [HideInInspector] public List<SignalData> content;
     }
     [Serializable]
     public class SignalDataMultipleContent
@@ -44,6 +54,7 @@ public class Settings : MonoBehaviour
     private void Start()
     {
         SetIDS();
+        Load();
     }
     public void SetIDS()
     {
@@ -58,7 +69,6 @@ public class Settings : MonoBehaviour
         id = 0;
         int lastDisparadorID = -1;
         SignalData disparador;
-        Vector2 pos;
         foreach (SignalData sd in allSignalsData)
         {            
             if (sd.disparador_id == lastDisparadorID)
@@ -71,7 +81,8 @@ public class Settings : MonoBehaviour
                 lastDisparadorID = sd.disparador_id;
             }
             disparador = GetDisparador(lastDisparadorID);
-            sd.pos = disparador.pos;
+            sd.pos_x = disparador.pos_x;
+            sd.distance = 20;
            // sd.id = id;
         }
     }
@@ -89,5 +100,47 @@ public class Settings : MonoBehaviour
             if (sd.disparador_id == id)
                 all.Add(sd);
         return all;
+    }
+
+
+    void Load()
+    {
+        all = JsonUtility.FromJson<AllData>(textAsset.text);
+        SaveData();
+        Game.Instance.Init();
+    }
+    void SaveData()
+    {
+        allSignalsData.Clear();
+        disparatoresData.Clear();
+        int disparadorID = 0;
+        foreach (SignalData sd in all.all)
+        {
+            sd.isDisparador = true;
+            sd.id = disparadorID;
+            sd.disparador_id = disparadorID;
+            int id = 0;
+            disparatoresData.Add(sd);
+            foreach (SignalData content in sd.content)
+            {
+                if (content.id == 0)
+                {
+                    content.id = id;
+                    id++;
+                }
+                else
+                {
+                    id = content.id;
+                }
+                content.disparador_id = sd.id;
+
+                if (content.distance == 0)
+                    content.distance = 25;
+
+                content.pos_x = sd.pos_x;
+                allSignalsData.Add(content);
+            }
+            disparadorID++;
+        }
     }
 }

@@ -263,6 +263,8 @@ GameObject:
   - component: {fileID: 5665670145748394935}
   - component: {fileID: 5665670145748394934}
   - component: {fileID: 5665670145748394937}
+  - component: {fileID: 5204311445848348757}
+  - component: {fileID: 5060516623156245891}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -351,6 +353,34 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &5204311445848348757
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5665670145748394939}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!111 &5060516623156245891
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5665670145748394939}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 289a0560cfdccf743b98a96664f756cc, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 289a0560cfdccf743b98a96664f756cc, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &5665670146594578012
 GameObject:
   m_ObjectHideFlags: 0

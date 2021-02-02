@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class CharacterRunningManager : MonoBehaviour
 {
-    public float maxSpeed = 10;
-    public float stepSpeed = 2;
+    float maxSpeed;
     public float speed;
-    public float desaceleration = 5;
+    float desaceleration;
     Animator anim;
     public Camera cam;
 
@@ -20,18 +19,20 @@ public class CharacterRunningManager : MonoBehaviour
 
     void Start()
     {
+        maxSpeed = Data.Instance.settings.maxSpeed;
+        desaceleration = Data.Instance.settings.desaceleration;
         anim = GetComponent<Animator>();
     }
 
-    public void Step()
+    public void UpdateSpeed(float _speed)
     {
-        speed += stepSpeed;
+        speed = _speed * 10;
         if (speed > maxSpeed)
             speed = maxSpeed;
     }
     private void Update()
     {
-        if (speed <= 0)
+        if (speed <= 0.25f)
         {
             anim.SetFloat("speed", 0);
             return;
@@ -50,6 +51,9 @@ public class CharacterRunningManager : MonoBehaviour
         Vector3 rot = cam.transform.localEulerAngles;
         rot.y = orientation.x;
         rot.x = orientation.y;
+        if (rot.x > 27) rot.x = 27;
+        else if (rot.x < -27) rot.x = -27;
         cam.transform.localEulerAngles = rot;
+
     }
 }

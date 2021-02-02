@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-
-    public ActivableButton buttonZ;
-    public ActivableButton buttonX;
+    public RunUIManager runUIManager;
 
     void Start()
     {
@@ -15,11 +13,7 @@ public class UIManager : MonoBehaviour
 
     void OnKeyPressed(string key)
     {
-        switch(key)
-        {
-            case "Z": buttonZ.OnActive();  break;
-            case "X": buttonX.OnActive(); break;
-        }
+        runUIManager.OnKeyPressed(key);
     }
 
     public void Exit()
