@@ -30,10 +30,13 @@ public class RunSignalsManager : MonoBehaviour
 
     float nextDistance;
     float distance;
-
+    float timeInRama;
+    float time_to_get_dark;
+    float speed_to_lights;
     public void Init()
     {
-        
+        time_to_get_dark = Data.Instance.settings.time_to_get_dark;
+        speed_to_lights = Data.Instance.settings.speed_to_lights;
         camTransform = Game.Instance.Character.cam.transform;
         viewDistance = Data.Instance.settings.viewDistance;
         nextDistance = viewDistance;
@@ -55,8 +58,11 @@ public class RunSignalsManager : MonoBehaviour
     }
     void SetDarkness()
     {
-        float dark = 1 - ((float)all.Count / 6);
-        Game.Instance.SetLightsValue(dark);
+        if (darkValue > 1)
+            darkValue = 1;
+        else if (darkValue < 0)
+            darkValue = 0;
+        Game.Instance.SetLightsValue(1-darkValue);
     }
     void CheckAllSignalsState()
     {
@@ -107,25 +113,35 @@ public class RunSignalsManager : MonoBehaviour
     void ResetSignalsFromOtherDisparadores()
     {
         List<RunSignal> all_to_remove = GetAllSignalsOfDisparador(disparadorID, true);
+
         foreach (RunSignal rs in all_to_remove)
-        {
             RemoveSignal(rs);
-        }                
     }
     bool IsNear(RunSignal rSignal)
     {
-        if (camTransform.position.z + 4 > rSignal.transform.position.z)
+        if ((camTransform.position.z + 4 > rSignal.transform.position.z) 
+            && (camTransform.position.z < rSignal.transform.position.z))
             return true;
         return false;
-    }    
+    }
+    float darkValue;
     public void OnUpdate(float distance)
     {
         this.distance = distance;
-        SetDarkness();
         CheckAllSignalsState();
 
         if (actualSignal == null)
             return;
+
+        if(state != states.NONE)
+        {
+            timeInRama += Time.deltaTime;
+            darkValue = timeInRama / time_to_get_dark;                
+        } else
+        {
+            darkValue -= Time.deltaTime * speed_to_lights;
+        }
+        SetDarkness();
 
         if (state == states.WAITING)
             return;
@@ -149,7 +165,6 @@ public class RunSignalsManager : MonoBehaviour
             RunSignal signal = Add();
             pos = signal.transform.position;
             pos.x = actualSignal.pos_x;
-            print(pos.x);
             pos.z = nextDistance;
             pos.y = 1;
             signal.transform.position = pos;
@@ -172,8 +187,18 @@ public class RunSignalsManager : MonoBehaviour
     void RemovePrevoiusSignal()
     {
         List<RunSignal> all_to_remove = GetAllSignalsOfDisparador(disparadorID);
-        if (all_to_remove.Count > 0)
-            RemoveSignal(all_to_remove[0]);
+        //  if (all_to_remove.Count > 0)
+        //    RemoveSignal(all_to_remove[0]);
+        int id = 0;
+        foreach (RunSignal rs in all_to_remove)
+        {
+            id++;
+            if (id == all_to_remove.Count)
+                return;
+            RemoveSignal(rs);          
+        }
+            
+
     }
     void SetNextSignal()
     {
@@ -186,10 +211,11 @@ public class RunSignalsManager : MonoBehaviour
             AddSignal();
         
         if(actualSignal != null)
-            print(state + " SetNextSignal - nextDistance: " + nextDistance + " disparadorID: " + disparadorID + "    SignalID: " + signalID + " actual distance: " + actualSignal.distance + " isDisp"  + actualSignal.isDisparador + " actual text: " + actualSignal.text );
+            print(" SetNextSignal - nextDistance: " + nextDistance + " disparadorID: " + disparadorID + "    SignalID: " + signalID + " actual distance: " + actualSignal.distance + " isDisp"  + actualSignal.isDisparador + " state: " + state + " all.Count: " + all.Count + " actual text: " + actualSignal.text );
     }
     void SetActiveDisparador(RunSignal rs)
     {
+        timeInRama = 0;
         signalID = 0;
         state = states.DISPARADOR;        
         disparadorID = rs.data.id;
@@ -215,12 +241,8 @@ public class RunSignalsManager : MonoBehaviour
         if (sData == null)
         {
             actualSignal = null;
-           // Debug.LogError("TA");
-            print("no hay signal____________state " + state + " diustance: " + distance);
-            //state = states.WAITING;
-            //state = states.NONE;
             nextDistance = distance + viewDistance;
-            //Invoke("AddDisparador", 2);
+            Data.Instance.settings.SetDisparadorDone(disparadorID);
         }
         else
         {
@@ -233,10 +255,14 @@ public class RunSignalsManager : MonoBehaviour
     {
         Reset();
 
-        actualSignal = GetNewDisparador();
-        disparadorID = actualSignal.id;
+        actualSignal = Data.Instance.settings.GetNextDisparador();
+        if(actualSignal == null)
+        {
+            Debug.Log("GAME OVER");
+            return;
+        }
         nextDistance = distance + actualSignal.distance + viewDistance;
-        print("D_____nextDistance: " + nextDistance + "   distance: " + distance);
+        print("sale disparadorID: " + actualSignal.id + "  nextDistance: " + nextDistance + "   distance: " + distance);
     }
     void RemoveAllActiveSignals()
     {
@@ -248,17 +274,17 @@ public class RunSignalsManager : MonoBehaviour
     }
     List<RunSignal> GetAllSignalsOfDisparador(int _disparadorID, bool notThisDisparador = false)
     {
-        print("remove all for " + _disparadorID);
+        print("remove others,  but: " + _disparadorID);
         List<RunSignal> arr = new List<RunSignal>();
         foreach (RunSignal rs in all)
         {
             if(notThisDisparador)
             {
-                if (rs.data.disparador_id != _disparadorID || (rs.data.isDisparador && rs.data.id != _disparadorID))
+                if (rs.data.disparador_id != _disparadorID)
                     arr.Add(rs);
             }
             else 
-            if (rs.data.disparador_id == _disparadorID || (rs.data.isDisparador && rs.data.id == _disparadorID))
+            if (rs.data.disparador_id == _disparadorID)
                 arr.Add(rs);
         }
         return arr;
@@ -267,6 +293,7 @@ public class RunSignalsManager : MonoBehaviour
     {
         all.Remove(rs);
         rs.SetOff();
+       // Destroy(rs.gameObject);
     }
     RunSignal Add()
     {
@@ -281,20 +308,7 @@ public class RunSignalsManager : MonoBehaviour
     {
         posY = 0;
     }
-    Settings.SignalData GetNewDisparador()
-    {
-        print("GetNewDisparador" + disparadorID + " distance: " + distance);
-        int id = 0;
-        foreach (Settings.SignalData sd in disparatoresData)
-        {
-            id++;
-            if (sd.id == disparadorID && id < disparatoresData.Count)
-            {
-                return disparatoresData[id];
-            }               
-        }
-        return disparatoresData[0];
-    }
+    
     Settings.SignalData GetNewSignal()
     {       
         return GetSignalDataByID(signalID);       

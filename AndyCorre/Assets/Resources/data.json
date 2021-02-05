@@ -85,7 +85,7 @@
          "distance":25,
          "text":"¿Todavía despierta?",
          "sprite_url":"",
-         "pos_x":-2,
+         "pos_x":2,
          "content":[
             { "text":"Mamá volvía siempre muy tarde de su trabajo, a la madrugada."  },
             { "text":"A veces yo me despertaba antes de que llegue y no podía volverme a dormir. Entonces la esperaba."  },

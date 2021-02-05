@@ -9,13 +9,15 @@ public class Settings : MonoBehaviour
 
     public float maxSpeed = 10;
     public float desaceleration = 5;
-
+    public float time_to_get_dark = 10;
+    public float speed_to_lights = 2;
     public float rotationFactor = 0.15f;
     public float signalsSeparationY = 0.5f;
     public RunSignalSettings runSignalSettings;
     public float viewDistance = 50;
     public float rotationToActive = 0.5f;
     public float multiplechoiceSpeed = 5;
+
 
     [Serializable]
     public class RunSignalSettings
@@ -35,6 +37,7 @@ public class Settings : MonoBehaviour
     [Serializable]
     public class SignalData
     {
+        public bool done;
         public int id;
         [HideInInspector] public bool isDisparador;
         public int disparador_id;
@@ -136,11 +139,54 @@ public class Settings : MonoBehaviour
 
                 if (content.distance == 0)
                     content.distance = 25;
+                if (content.id>=10) // si es multiplechoice
+                    content.distance = 8;
 
                 content.pos_x = sd.pos_x;
                 allSignalsData.Add(content);
             }
             disparadorID++;
+        }
+    }
+    int disparadorArrayPos = 0;
+    public SignalData GetNextDisparador()
+    {
+        int id = 0;
+        if (disparadorArrayPos >= disparatoresData.Count - 1)
+            disparadorArrayPos = 0;
+
+        print("_______GetNextDisparador " + disparadorArrayPos);
+        foreach (SignalData sd in disparatoresData)
+        {
+            if (id == disparadorArrayPos && !sd.done)
+            {
+                disparadorArrayPos++;
+                return sd;
+            }
+            else if (id > disparadorArrayPos)
+                disparadorArrayPos++;
+            id++;
+        }
+        id = 0;
+        disparadorArrayPos = 0;
+        foreach (SignalData sd in disparatoresData)
+        {
+            if (!sd.done)
+            {
+                disparadorArrayPos = id;
+                return sd;
+            }
+            id++;
+        }
+        return null;
+    }
+    public void SetDisparadorDone(int disparadorID)
+    {
+        print("SetDisparadorDone " + disparadorID);
+        foreach(SignalData sd in disparatoresData)
+        {
+            if (sd.id == disparadorID)
+                sd.done = true;
         }
     }
 }

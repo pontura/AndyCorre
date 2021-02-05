@@ -16,6 +16,7 @@ public class RunSignal : MonoBehaviour
     public GameObject view_multiplechoice;
     public RunMultiplechoiceButton mButton;
     public Canvas canvas;
+    List<RunMultiplechoiceButton> multiplechoiceAll;
 
     public enum states
     {
@@ -30,6 +31,7 @@ public class RunSignal : MonoBehaviour
         SetCanvasAlpha(0.5f);
         canvas.worldCamera = Game.Instance.Character.cam;
         this.data = data;
+        multiplechoiceAll = new List<RunMultiplechoiceButton>();
         if (data.multiplechoice != null && data.multiplechoice.Length > 0)
         {
             foreach(Settings.SignalDataMultipleContent d in data.multiplechoice)
@@ -37,6 +39,7 @@ public class RunSignal : MonoBehaviour
                 RunMultiplechoiceButton button = Instantiate(mButton);
                 button.transform.SetParent(view_multiplechoice.transform);
                 button.Init(this, d);
+                multiplechoiceAll.Add(button);
             }                
         }
 
@@ -48,14 +51,26 @@ public class RunSignal : MonoBehaviour
         if (data.sprite == null)
             image.enabled = false;
         else
-            image.sprite = data.sprite;
-       
+            image.sprite = data.sprite;       
+    }
+    public void OnOverMultiplechoice(RunMultiplechoiceButton buttonOver)
+    {
+        if (buttonOver == null)
+        {
+            foreach (RunMultiplechoiceButton m in multiplechoiceAll)
+                m.RollOut();
+        }
+        else
+        {
+            foreach (RunMultiplechoiceButton m in multiplechoiceAll)
+                if (m != buttonOver)
+                    m.SetOff();
+        }
     }
     public void SetOn()
     {
         state = states.ON;
         SetCanvasAlpha(1);
-
     }
     void SetCanvasAlpha(float value)
     {

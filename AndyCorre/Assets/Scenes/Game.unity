@@ -232,7 +232,6 @@ Transform:
   - {fileID: 687325477}
   - {fileID: 987271759}
   - {fileID: 717230756}
-  - {fileID: 302730272}
   m_Father: {fileID: 547028188}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -420,87 +419,6 @@ Transform:
   m_Father: {fileID: 547028188}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &302730271
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 49374856}
-    m_Modifications:
-    - target: {fileID: 3310057624479950386, guid: e119c3cbaf5af8a47a4a613ca2d16682,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3310057624479950386, guid: e119c3cbaf5af8a47a4a613ca2d16682,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3310057624479950386, guid: e119c3cbaf5af8a47a4a613ca2d16682,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3310057624479950386, guid: e119c3cbaf5af8a47a4a613ca2d16682,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 450
-      objectReference: {fileID: 0}
-    - target: {fileID: 3310057624479950386, guid: e119c3cbaf5af8a47a4a613ca2d16682,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3310057624479950386, guid: e119c3cbaf5af8a47a4a613ca2d16682,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3310057624479950386, guid: e119c3cbaf5af8a47a4a613ca2d16682,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3310057624479950386, guid: e119c3cbaf5af8a47a4a613ca2d16682,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3310057624479950386, guid: e119c3cbaf5af8a47a4a613ca2d16682,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3310057624479950386, guid: e119c3cbaf5af8a47a4a613ca2d16682,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3310057624479950386, guid: e119c3cbaf5af8a47a4a613ca2d16682,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3310057624479950413, guid: e119c3cbaf5af8a47a4a613ca2d16682,
-        type: 3}
-      propertyPath: m_Name
-      value: Terrain (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3310057624479950413, guid: e119c3cbaf5af8a47a4a613ca2d16682,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1902942890809004049, guid: e119c3cbaf5af8a47a4a613ca2d16682, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: e119c3cbaf5af8a47a4a613ca2d16682, type: 3}
---- !u!4 &302730272 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3310057624479950386, guid: e119c3cbaf5af8a47a4a613ca2d16682,
-    type: 3}
-  m_PrefabInstance: {fileID: 302730271}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &318790825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,7 +1055,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.8862745, g: 0.5709972, b: 0.29512942, a: 1}
+  m_Color: {r: 0.9811321, g: 0.76291203, b: 0.56924176, a: 1}
   m_Intensity: 2.04
   m_Range: 10
   m_SpotAngle: 30
@@ -1298,7 +1216,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!154 &773429871
 TerrainCollider:
@@ -1308,7 +1226,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773429870}
   m_Material: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_TerrainData: {fileID: 15600000, guid: b928b31a7dd959e4fa5e6c7d53f786bd, type: 2}
   m_EnableTreeColliders: 0
 --- !u!218 &773429872
@@ -1987,16 +1905,19 @@ MonoBehaviour:
   textAsset: {fileID: 4900000, guid: 095d189c66c7d9e4a9e720a5316af4d7, type: 3}
   maxSpeed: 10
   desaceleration: 2
+  time_to_get_dark: 10
+  speed_to_lights: 2
   rotationFactor: 0.15
   signalsSeparationY: 0.1
   runSignalSettings:
     distance_z: 4
     rotationFreeze: 0.08
-  viewDistance: 40
+  viewDistance: 35
   rotationToActive: 0.1
   multiplechoiceSpeed: 0.5
   disparatoresData:
-  - id: 0
+  - done: 0
+    id: 0
     isDisparador: 0
     disparador_id: 0
     distance: 25
@@ -2005,7 +1926,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 1
+  - done: 0
+    id: 1
     isDisparador: 0
     disparador_id: 0
     distance: 25
@@ -2014,7 +1936,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 2
+  - done: 0
+    id: 2
     isDisparador: 0
     disparador_id: 0
     distance: 25
@@ -2024,7 +1947,8 @@ MonoBehaviour:
     multiplechoice: []
     content: []
   allSignalsData:
-  - id: 0
+  - done: 0
+    id: 0
     isDisparador: 0
     disparador_id: 0
     distance: 25
@@ -2034,7 +1958,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 1
+  - done: 0
+    id: 1
     isDisparador: 0
     disparador_id: 0
     distance: 25
@@ -2043,7 +1968,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 2
+  - done: 0
+    id: 2
     isDisparador: 0
     disparador_id: 0
     distance: 25
@@ -2052,7 +1978,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 3
+  - done: 0
+    id: 3
     isDisparador: 0
     disparador_id: 0
     distance: 25
@@ -2062,7 +1989,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 4
+  - done: 0
+    id: 4
     isDisparador: 0
     disparador_id: 0
     distance: 25
@@ -2071,7 +1999,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 5
+  - done: 0
+    id: 5
     isDisparador: 0
     disparador_id: 0
     distance: 25
@@ -2086,7 +2015,8 @@ MonoBehaviour:
     - goto_id: 301
       text: "Lo que el buitre pregunt\xF3 fue..."
     content: []
-  - id: 0
+  - done: 0
+    id: 0
     isDisparador: 0
     disparador_id: 1
     distance: 25
@@ -2095,7 +2025,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 1
+  - done: 0
+    id: 1
     isDisparador: 0
     disparador_id: 1
     distance: 25
@@ -2104,7 +2035,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 2
+  - done: 0
+    id: 2
     isDisparador: 0
     disparador_id: 1
     distance: 25
@@ -2113,7 +2045,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 3
+  - done: 0
+    id: 3
     isDisparador: 0
     disparador_id: 1
     distance: 25
@@ -2122,7 +2055,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 4
+  - done: 0
+    id: 4
     isDisparador: 0
     disparador_id: 1
     distance: 25
@@ -2137,7 +2071,8 @@ MonoBehaviour:
     - goto_id: 1301
       text: No estoy segura de que sea buena idea.
     content: []
-  - id: 101
+  - done: 0
+    id: 101
     isDisparador: 0
     disparador_id: 0
     distance: 25
@@ -2146,7 +2081,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 201
+  - done: 0
+    id: 201
     isDisparador: 0
     disparador_id: 0
     distance: 25
@@ -2155,7 +2091,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 301
+  - done: 0
+    id: 301
     isDisparador: 0
     disparador_id: 0
     distance: 25
@@ -2164,7 +2101,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 1101
+  - done: 0
+    id: 1101
     isDisparador: 0
     disparador_id: 1
     distance: 25
@@ -2173,7 +2111,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 1201
+  - done: 0
+    id: 1201
     isDisparador: 0
     disparador_id: 1
     distance: 25
@@ -2182,7 +2121,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 1301
+  - done: 0
+    id: 1301
     isDisparador: 0
     disparador_id: 1
     distance: 25
@@ -2191,7 +2131,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 0
+  - done: 0
+    id: 0
     isDisparador: 0
     disparador_id: 2
     distance: 25
@@ -2200,7 +2141,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 1
+  - done: 0
+    id: 1
     isDisparador: 0
     disparador_id: 2
     distance: 25
@@ -2209,7 +2151,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 2
+  - done: 0
+    id: 2
     isDisparador: 0
     disparador_id: 2
     distance: 25
@@ -2218,7 +2161,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 3
+  - done: 0
+    id: 3
     isDisparador: 0
     disparador_id: 2
     distance: 25
@@ -2228,7 +2172,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 4
+  - done: 0
+    id: 4
     isDisparador: 0
     disparador_id: 2
     distance: 25
@@ -2237,7 +2182,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 5
+  - done: 0
+    id: 5
     isDisparador: 0
     disparador_id: 2
     distance: 25
@@ -2252,7 +2198,8 @@ MonoBehaviour:
     - goto_id: 2103
       text: "Sigo despert\xE1ndome a la noche..."
     content: []
-  - id: 2101
+  - done: 0
+    id: 2101
     isDisparador: 0
     disparador_id: 2
     distance: 25
@@ -2261,7 +2208,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 2102
+  - done: 0
+    id: 2102
     isDisparador: 0
     disparador_id: 2
     distance: 25
@@ -2270,7 +2218,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 2201
+  - done: 0
+    id: 2201
     isDisparador: 0
     disparador_id: 2
     distance: 25
@@ -2279,7 +2228,8 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice: []
     content: []
-  - id: 2301
+  - done: 0
+    id: 2301
     isDisparador: 0
     disparador_id: 2
     distance: 25
@@ -3228,13 +3178,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain
       objectReference: {fileID: 0}
-    - target: {fileID: 3310057624479950413, guid: e119c3cbaf5af8a47a4a613ca2d16682,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1902942890809004049, guid: e119c3cbaf5af8a47a4a613ca2d16682, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e119c3cbaf5af8a47a4a613ca2d16682, type: 3}
 --- !u!1001 &5665670146619018670
 PrefabInstance:
