@@ -19,10 +19,14 @@ public class RunMultiplechoiceButton : MonoBehaviour
     Color fieldColor;
     float alphaValue;
 
-    public void Init(RunSignal runSignal, Settings.SignalDataMultipleContent content)
+    public void Init(RunSignal runSignal, Settings.SignalDataMultipleContent content, Color fieldColor)
     {
+        Color barColor = fieldColor;
+        barColor.a = 0.2f;
+        bar.color = barColor;
+
         bgColor = bg.color;
-        fieldColor = Color.white;
+        this.fieldColor = fieldColor;
         speed = Data.Instance.settings.multiplechoiceSpeed;
         this.runSignal = runSignal;
         this.content = content;

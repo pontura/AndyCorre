@@ -62,8 +62,8 @@ public class RunUIManager : MonoBehaviour
         lastKeyPressedTime = Time.time;
         switch (key)
         {
-            case "Z": buttonZ.OnActive(); break;
-            case "X": buttonX.OnActive(); break;
+            case "Z": buttonZ.OnActive(); Events.PlaySound("steps", "step1", false); break;
+            case "X": buttonX.OnActive(); Events.PlaySound("steps", "step2", false); break;
         }
 
     }
@@ -100,6 +100,7 @@ public class RunUIManager : MonoBehaviour
             anim.Play("stepRythmBar");
             timer = 0;
             barAlpha = 1;
+            Events.PlaySound("ui", "kick", false);
         }
         barAlpha -= Time.deltaTime * 2;
         if (barAlpha < 0)

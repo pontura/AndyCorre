@@ -1883,6 +1883,7 @@ GameObject:
   - component: {fileID: 1157530508}
   - component: {fileID: 1157530507}
   - component: {fileID: 1157530506}
+  - component: {fileID: 1157530509}
   m_Layer: 0
   m_Name: Data
   m_TagString: Untagged
@@ -1903,6 +1904,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textAsset: {fileID: 4900000, guid: 095d189c66c7d9e4a9e720a5316af4d7, type: 3}
+  disparadoresColors:
+  - {r: 0.38416696, g: 0.9150943, b: 0.39871284, a: 1}
+  - {r: 0.8713846, g: 0.9716981, b: 0.4995995, a: 1}
+  - {r: 0.9716981, g: 0.6004361, b: 0.9604477, a: 1}
+  - {r: 0.52954787, g: 0.8583589, b: 0.9433962, a: 1}
+  - {r: 0.9433962, g: 0.6096476, b: 0.6187913, a: 1}
+  - {r: 0.53626734, g: 0.67942274, b: 0.9716981, a: 1}
   maxSpeed: 10
   desaceleration: 2
   time_to_get_dark: 10
@@ -2267,6 +2275,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1157530509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157530505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5f03ac2a5c1c7b4ba5491b0852317d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  all:
+  - sourceName: ui
+    audioSource: {fileID: 0}
+    volume: 0.2
+  - sourceName: steps
+    audioSource: {fileID: 0}
+    volume: 0.2
+  - sourceName: music
+    audioSource: {fileID: 0}
+    volume: 1
+  - sourceName: park
+    audioSource: {fileID: 0}
+    volume: 1
 --- !u!1 &1159911322
 GameObject:
   m_ObjectHideFlags: 0

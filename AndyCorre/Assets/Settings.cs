@@ -6,6 +6,7 @@ using System;
 public class Settings : MonoBehaviour
 {
     public TextAsset textAsset;
+    public Color[] disparadoresColors;
 
     public float maxSpeed = 10;
     public float desaceleration = 5;
@@ -188,5 +189,19 @@ public class Settings : MonoBehaviour
             if (sd.id == disparadorID)
                 sd.done = true;
         }
+    }
+    public int GetTotalLinesInDisparador(int disparadorID)
+    {
+        int id = 0;
+        foreach (SignalData sd in allSignalsData)
+        {
+            if (sd.disparador_id == disparadorID)
+            {
+                id++;
+                if (sd.multiplechoice != null && sd.multiplechoice.Length > 0)
+                    return id;
+            }
+        }
+        return id;
     }
 }

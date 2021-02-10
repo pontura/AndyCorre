@@ -94,12 +94,12 @@ public class RunSignalsManager : MonoBehaviour
                 if (rSignal.state == RunSignal.states.IDLE)
                 {
                     if (!rSignal.data.isDisparador && state != states.NONE && rSignal.data.disparador_id == disparadorID)
-                        rSignal.SetOn();
+                        rSignal.SetOn(rSignal.data.id + 1, Data.Instance.settings.GetTotalLinesInDisparador(disparadorID));
                     else if (rSignal.data.isDisparador && state == states.NONE)
                     {
                         if (Mathf.Abs(cam_rotation) > Data.Instance.settings.rotationToActive && Mathf.Sign(cam_rotation) == Mathf.Sign(rSignal.data.pos_x))
                         {
-                            rSignal.SetOn();
+                            rSignal.SetOn(rSignal.data.id, Data.Instance.settings.GetTotalLinesInDisparador(disparadorID));
                             SetActiveDisparador(rSignal);
                             newDisparador = true;
                         }
@@ -128,10 +128,7 @@ public class RunSignalsManager : MonoBehaviour
     public void OnUpdate(float distance)
     {
         this.distance = distance;
-        CheckAllSignalsState();
-
-        if (actualSignal == null)
-            return;
+        CheckAllSignalsState();       
 
         if(state != states.NONE)
         {
@@ -142,6 +139,9 @@ public class RunSignalsManager : MonoBehaviour
             darkValue -= Time.deltaTime * speed_to_lights;
         }
         SetDarkness();
+
+        if (actualSignal == null)
+            return;
 
         if (state == states.WAITING)
             return;
@@ -219,7 +219,9 @@ public class RunSignalsManager : MonoBehaviour
         signalID = 0;
         state = states.DISPARADOR;        
         disparadorID = rs.data.id;
-        //ResetAll(rs);
+        Events.PlaySound("music", "theme1", true);
+        Events.ChangeVolume("music", 0);
+        Events.FadeVolume("music", 1, 5);
         SetNewSignals();        
     }
     void SetNewSignals()
@@ -235,6 +237,10 @@ public class RunSignalsManager : MonoBehaviour
         AddDisparador();
         state = states.NONE;
     }
+    void ForceFinishDisparador()
+    {
+        RemoveAllActiveSignals();
+    }
     void AddSignal()
     {
         Settings.SignalData sData = GetNewSignal();       
@@ -243,6 +249,7 @@ public class RunSignalsManager : MonoBehaviour
             actualSignal = null;
             nextDistance = distance + viewDistance;
             Data.Instance.settings.SetDisparadorDone(disparadorID);
+            Invoke("ForceFinishDisparador", 4);
         }
         else
         {
@@ -266,6 +273,8 @@ public class RunSignalsManager : MonoBehaviour
     }
     void RemoveAllActiveSignals()
     {
+        CancelInvoke();
+        Events.FadeVolume("music", 0, 5);
         List<RunSignal> all_to_remove = GetAllSignalsOfDisparador(disparadorID);
         foreach (RunSignal rs in all_to_remove)
         {

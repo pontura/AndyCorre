@@ -17,6 +17,9 @@ public class RunSignal : MonoBehaviour
     public RunMultiplechoiceButton mButton;
     public Canvas canvas;
     List<RunMultiplechoiceButton> multiplechoiceAll;
+    Color fieldColor;
+    public Image bar;
+    public GameObject barAsset;
 
     public enum states
     {
@@ -27,27 +30,33 @@ public class RunSignal : MonoBehaviour
 
     public void Init(RunSignalsManager manager, Settings.SignalData data)
     {
+        fieldColor = Data.Instance.settings.disparadoresColors[data.disparador_id];
+        bar.color = fieldColor;
         container = transform.parent;
         SetCanvasAlpha(0.5f);
         canvas.worldCamera = Game.Instance.Character.cam;
         this.data = data;
         multiplechoiceAll = new List<RunMultiplechoiceButton>();
+        Vector3 barPos = barAsset.transform.position;
         if (data.multiplechoice != null && data.multiplechoice.Length > 0)
         {
-            foreach(Settings.SignalDataMultipleContent d in data.multiplechoice)
+            foreach (Settings.SignalDataMultipleContent d in data.multiplechoice)
             {
                 RunMultiplechoiceButton button = Instantiate(mButton);
                 button.transform.SetParent(view_multiplechoice.transform);
-                button.Init(this, d);
+                button.Init(this, d, fieldColor);
                 multiplechoiceAll.Add(button);
-            }                
+            }
+            barPos.y += .65f;
         }
-
+        barAsset.transform.position = barPos;
         settings = Data.Instance.settings.runSignalSettings;
         
         this.manager = manager;
         target = Game.Instance.Character.cam.transform;
         field.text = data.text;
+        field.color = fieldColor;
+
         if (data.sprite == null)
             image.enabled = false;
         else
@@ -67,10 +76,24 @@ public class RunSignal : MonoBehaviour
                     m.SetOff();
         }
     }
-    public void SetOn()
+    float barTo;
+    public void SetOn(int id, int total)
     {
+        StopAllCoroutines();
         state = states.ON;
         SetCanvasAlpha(1);
+        bar.fillAmount = 0;
+
+        id++;
+        total++;
+
+        bar.fillAmount = (float)(id - 1) / (float)total;
+        barTo = (float)id / (float)total;
+    }
+    void Update()
+    {
+        if(state == states.ON && bar.fillAmount <= barTo)
+            bar.fillAmount += Time.deltaTime/4;
     }
     void SetCanvasAlpha(float value)
     {

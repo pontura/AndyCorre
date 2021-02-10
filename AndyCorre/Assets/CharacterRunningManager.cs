@@ -22,6 +22,8 @@ public class CharacterRunningManager : MonoBehaviour
         maxSpeed = Data.Instance.settings.maxSpeed;
         desaceleration = Data.Instance.settings.desaceleration;
         anim = GetComponent<Animator>();
+        
+        Events.PlaySound("park", "park", true);
     }
 
     public void UpdateSpeed(float _speed)
