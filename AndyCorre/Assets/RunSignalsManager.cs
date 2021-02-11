@@ -76,6 +76,8 @@ public class RunSignalsManager : MonoBehaviour
             if(state != states.NONE)
                 RemoveAllActiveSignals();
 
+            Events.ChangeCursor(CursorUI.types.SIMPLE, Color.white);
+
             state = states.NONE;
             if (actualSignal == null)
             {

@@ -87,6 +87,7 @@ public class RunSignal : MonoBehaviour
     float barTo;
     public void SetOn(int id, int total)
     {
+        Events.ChangeCursor(CursorUI.types.READ, fieldColor);
         Events.PlaySound("ui", "signalOn", false);
         StopAllCoroutines();
         state = states.ON;

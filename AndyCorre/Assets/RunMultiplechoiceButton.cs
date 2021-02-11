@@ -11,7 +11,7 @@ public class RunMultiplechoiceButton : MonoBehaviour
     public Image bar;
     public Image bg;
     float value;
-    float speed = 2;
+    float speed = 1.2f;
     bool isOver;
     bool isOff;
     bool isDone;
