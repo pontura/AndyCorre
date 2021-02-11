@@ -25,7 +25,8 @@ public class RunSignal : MonoBehaviour
     {
         IDLE,
         ON,
-        DONE        
+        SELECTED,
+        DONE            
     }
 
     public void Init(RunSignalsManager manager, Settings.SignalData data)
@@ -37,7 +38,7 @@ public class RunSignal : MonoBehaviour
         canvas.worldCamera = Game.Instance.Character.cam;
         this.data = data;
         multiplechoiceAll = new List<RunMultiplechoiceButton>();
-        Vector3 barPos = barAsset.transform.position;
+       
         if (data.multiplechoice != null && data.multiplechoice.Length > 0)
         {
             foreach (Settings.SignalDataMultipleContent d in data.multiplechoice)
@@ -47,9 +48,8 @@ public class RunSignal : MonoBehaviour
                 button.Init(this, d, fieldColor);
                 multiplechoiceAll.Add(button);
             }
-            barPos.y += .65f;
+            SetBarOff();
         }
-        barAsset.transform.position = barPos;
         settings = Data.Instance.settings.runSignalSettings;
         
         this.manager = manager;
@@ -62,8 +62,16 @@ public class RunSignal : MonoBehaviour
         else
             image.sprite = data.sprite;       
     }
+    void SetBarOff()
+    {
+        Vector3 barPos = barAsset.transform.position;
+        barPos.y += 1000;
+        barAsset.transform.position = barPos;
+    }
     public void OnOverMultiplechoice(RunMultiplechoiceButton buttonOver)
     {
+        if (state != states.ON)
+            return;
         if (buttonOver == null)
         {
             foreach (RunMultiplechoiceButton m in multiplechoiceAll)
@@ -89,11 +97,13 @@ public class RunSignal : MonoBehaviour
 
         bar.fillAmount = (float)(id - 1) / (float)total;
         barTo = (float)id / (float)total;
+        if(id > total-1)
+            SetBarOff();
     }
     void Update()
     {
         if(state == states.ON && bar.fillAmount <= barTo)
-            bar.fillAmount += Time.deltaTime/4;
+            bar.fillAmount += Time.deltaTime/1;
     }
     void SetCanvasAlpha(float value)
     {
@@ -138,6 +148,7 @@ public class RunSignal : MonoBehaviour
 
     public void Clicked(Settings.SignalDataMultipleContent content)
     {
+        state = states.SELECTED;
         manager.MultiplechoiceSelected(content);
     }
 }

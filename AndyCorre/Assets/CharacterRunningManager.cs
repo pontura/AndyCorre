@@ -9,6 +9,7 @@ public class CharacterRunningManager : MonoBehaviour
     float desaceleration;
     Animator anim;
     public Camera cam;
+    public EffectsManager effectsManager;
 
     public states state;
     public enum states
@@ -28,6 +29,11 @@ public class CharacterRunningManager : MonoBehaviour
 
     public void UpdateSpeed(float _speed)
     {
+        float aberrationValue = _speed - 0.5f;
+        if (aberrationValue < 0)
+            aberrationValue = 0;
+        else aberrationValue *= 2;
+        effectsManager.ChangeAberration(aberrationValue);
         speed = _speed * 10;
         if (speed > maxSpeed)
             speed = maxSpeed;
@@ -55,6 +61,8 @@ public class CharacterRunningManager : MonoBehaviour
         rot.x = orientation.y;
         if (rot.x > 27) rot.x = 27;
         else if (rot.x < -27) rot.x = -27;
+        if (rot.y > 70) rot.y = 70;
+        else if (rot.y < -70) rot.y = -70;
         cam.transform.localEulerAngles = rot;
 
     }

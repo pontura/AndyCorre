@@ -27,6 +27,14 @@ public class RunUIManager : MonoBehaviour
         character = Game.Instance.Character;
         anim = GetComponent<Animation>();
     }
+    int lasBreathID;
+    void SetBreath(int id)
+    {
+        if (id == lasBreathID)
+            return;
+        lasBreathID = id;
+        Events.PlaySound("breath", "breath" + id, true);
+    }
     public void OnKeyPressed(string key)
     {        
         if (lastKeyPressedTime != 0)
@@ -39,9 +47,12 @@ public class RunUIManager : MonoBehaviour
                 {
                     myRythm = Mathf.Lerp(myRythm, rythm, 0.5f);
                     barColor = Color.green;
+                    SetBreath(1);
                 }
                 else
                 {
+                    if(rythm> newDeltaTime)
+                        SetBreath(2);
                     barColor = Color.red;
                     if (newDeltaTime > rythm)
                         myRythm -= variation;

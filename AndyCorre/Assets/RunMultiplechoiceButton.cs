@@ -18,6 +18,7 @@ public class RunMultiplechoiceButton : MonoBehaviour
     Color bgColor;
     Color fieldColor;
     float alphaValue;
+    float initialValue = 0.015f;
 
     public void Init(RunSignal runSignal, Settings.SignalDataMultipleContent content, Color fieldColor)
     {
@@ -35,10 +36,14 @@ public class RunMultiplechoiceButton : MonoBehaviour
         transform.localEulerAngles = Vector3.zero;
         transform.localPosition = Vector3.zero;
         transform.localScale = Vector3.one;
+
+        value = initialValue;
+        SetBar();
     }
     public void RollOut()
     {
         isOff = false;
+        alphaValue = 1;
         bgColor.a = 1;
         bg.color = bgColor;
         field.color = Color.white;
@@ -54,7 +59,7 @@ public class RunMultiplechoiceButton : MonoBehaviour
             alphaValue -= speed * Time.deltaTime;
         }
         else
-            alphaValue += speed * Time.deltaTime / 2;
+            alphaValue += Time.deltaTime;
         if (alphaValue < 0)
             alphaValue = 0;
         else if (alphaValue > 1)
@@ -94,7 +99,7 @@ public class RunMultiplechoiceButton : MonoBehaviour
         alphaValue = 1;
         isOff = false;
         isOver = true;
-        value = 0;
+        value = initialValue;
         SetBar();
     }
     public void Pointerxit()
@@ -102,7 +107,7 @@ public class RunMultiplechoiceButton : MonoBehaviour
         isOff = false;
         runSignal.OnOverMultiplechoice(null);
         isOver = false;
-        value = 0;
+        value = initialValue;
         SetBar();
     }
     public void Clicked()

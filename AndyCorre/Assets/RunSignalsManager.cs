@@ -99,7 +99,7 @@ public class RunSignalsManager : MonoBehaviour
                     {
                         if (Mathf.Abs(cam_rotation) > Data.Instance.settings.rotationToActive && Mathf.Sign(cam_rotation) == Mathf.Sign(rSignal.data.pos_x))
                         {
-                            rSignal.SetOn(rSignal.data.id, Data.Instance.settings.GetTotalLinesInDisparador(disparadorID));
+                            rSignal.SetOn(0, Data.Instance.settings.GetTotalLinesInDisparador(disparadorID));
                             SetActiveDisparador(rSignal);
                             newDisparador = true;
                         }
