@@ -33,6 +33,20 @@ public class RunSignalsManager : MonoBehaviour
     float timeInRama;
     float time_to_get_dark;
     float speed_to_lights;
+
+    private void Awake()
+    {
+        Events.RunningState += RunningState;
+    }
+    private void OnDestroy()
+    {
+        Events.RunningState -= RunningState;
+    }
+    private void RunningState(bool isRunning)
+    {
+        if (!isRunning)
+            OutOfSight();
+    }
     public void Init()
     {
         time_to_get_dark = Data.Instance.settings.time_to_get_dark;
@@ -64,28 +78,30 @@ public class RunSignalsManager : MonoBehaviour
             darkValue = 0;
         Game.Instance.SetLightsValue(1-darkValue);
     }
+    void OutOfSight()
+    {
+        if (state == states.WAITING)
+            actualSignal = null;
+
+        if (state != states.NONE)
+            RemoveAllActiveSignals();
+
+        Events.ChangeCursor(CursorUI.types.SIMPLE, Color.white);
+
+        state = states.NONE;
+        if (actualSignal == null)
+        {
+            SetNextSignal();
+            nextDistance += viewDistance;
+        }
+    }
     void CheckAllSignalsState()
     {
         float cam_rotation = camTransform.rotation.y;
 
         if (Mathf.Abs(cam_rotation) < Data.Instance.settings.rotationToActive)
-        {
-            if (state == states.WAITING)
-                actualSignal = null;
+            OutOfSight();
 
-            if(state != states.NONE)
-                RemoveAllActiveSignals();
-
-            Events.ChangeCursor(CursorUI.types.SIMPLE, Color.white);
-
-            state = states.NONE;
-            if (actualSignal == null)
-            {
-                SetNextSignal();
-                nextDistance += viewDistance;
-            } 
-           
-        }
         bool newDisparador = false;
         foreach (RunSignal rSignal in all)
         {

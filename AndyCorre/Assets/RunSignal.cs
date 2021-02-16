@@ -20,6 +20,8 @@ public class RunSignal : MonoBehaviour
     Color fieldColor;
     public Image bar;
     public GameObject barAsset;
+    public Image fillImage;
+    bool isMultiplechoice;
 
     public enum states
     {
@@ -41,6 +43,7 @@ public class RunSignal : MonoBehaviour
        
         if (data.multiplechoice != null && data.multiplechoice.Length > 0)
         {
+            isMultiplechoice = true;
             foreach (Settings.SignalDataMultipleContent d in data.multiplechoice)
             {
                 RunMultiplechoiceButton button = Instantiate(mButton);
@@ -60,7 +63,9 @@ public class RunSignal : MonoBehaviour
         if (data.sprite == null)
             image.enabled = false;
         else
-            image.sprite = data.sprite;       
+            image.sprite = data.sprite;
+        if (!data.isDisparador)
+            fillImage.fillAmount = 0.05f;
     }
     void SetBarOff()
     {
@@ -102,10 +107,16 @@ public class RunSignal : MonoBehaviour
         if(id > total-1)
             SetBarOff();
     }
+    float filled;
     void Update()
     {
-        if(state == states.ON && bar.fillAmount <= barTo)
-            bar.fillAmount += Time.deltaTime/1;
+        if (state == states.ON)
+        {
+            if (bar.fillAmount <= barTo)
+                bar.fillAmount += Time.deltaTime / 1;
+
+            
+        }
     }
     void SetCanvasAlpha(float value)
     {
@@ -141,7 +152,19 @@ public class RunSignal : MonoBehaviour
 
         if (state == states.ON)
         {
-              pos.z = Mathf.Lerp(pos.z, target.transform.position.z + settings.distance_z, Time.deltaTime * (cam_rotation / settings.rotationFreeze));
+            if (!isMultiplechoice && !data.isDisparador)
+            {
+                if (filled < 1)
+                {
+                    float  d = Data.Instance.settings.speedToReadRunSignals + ((float)(data.text.Length) * (Data.Instance.settings.speedToReadRunSignalsByLetter / 100));
+                    filled += Time.deltaTime / d;
+                }
+                    
+                else filled = 1;
+                fillImage.fillAmount = filled;
+                print("filled " + filled);
+            }
+            pos.z = Mathf.Lerp(pos.z, target.transform.position.z + settings.distance_z, Time.deltaTime * (cam_rotation / settings.rotationFreeze));
         }
         pos.y = target.transform.position.y -1 - (Game.Instance.Character.cam.transform.parent.transform.localPosition.y/50);
 

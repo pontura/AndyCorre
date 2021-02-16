@@ -8,6 +8,12 @@ public class Settings : MonoBehaviour
     public TextAsset textAsset;
     public Color[] disparadoresColors;
 
+    public float distanceBetweenContentText;
+    public float distanceByLetters;
+
+
+    public float speedToReadRunSignalsByLetter;
+    public float speedToReadRunSignals;
     public float maxSpeed = 10;
     public float desaceleration = 5;
     public float time_to_get_dark = 10;
@@ -139,9 +145,19 @@ public class Settings : MonoBehaviour
                 content.disparador_id = sd.id;
 
                 if (content.distance == 0)
-                    content.distance = 25;
-                if (content.id>=10) // si es multiplechoice
-                    content.distance = 8;
+                {
+                    float d = distanceBetweenContentText;
+                    if(content.id > 0 && content.text != null) 
+                         d += ((float)(content.text.Length) * (distanceByLetters / 50));
+
+                    content.distance = d;
+
+                }
+                if (content.id >= 10)
+                {
+                    content.distance = 5; //    multiplechoice answer:
+                }
+                   
 
                 content.pos_x = sd.pos_x;
                 allSignalsData.Add(content);

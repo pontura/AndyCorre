@@ -6,26 +6,53 @@ using UnityEngine.UI;
 public class RunUIManager : MonoBehaviour
 {
     public GameObject arrow;
+    public ActivableButton space;
     public ActivableButton buttonZ;
     public ActivableButton buttonX;
     float rythmValue;
     float lastKeyPressedTime;
     float deltaTime;
-    public float rythm = 0.5f;
+
+    float realRythm = 0.5f;
+    float rythmAcceleration = 0.05f;
+    float initialRythm = 0.8f;
+    public float rythm;
+
     float myRythm;
-    public float variation = 0.05f;
+    public float variation = 0.025f;
     public float desaceleration = 0.002f;
     float myDesaceleration;
     public Text field;
     public Image rythmBarImage;
     CharacterRunningManager character;
     Animation anim;
+    public states state;
+    public enum states
+    {
+        IDLE,
+        RUNNING,
+        STOPPED
+    }
 
     void Start()
     {
         field.text = "";
         character = Game.Instance.Character;
         anim = GetComponent<Animation>();
+        InitRunning();
+        Events.RunningState += RunningState;
+        Events.RunningState(true);
+    }
+    private void OnDestroy()
+    {
+        Events.RunningState -= RunningState;
+    }
+    void RunningState(bool isOn)
+    {
+        if (isOn)
+            InitRunning();
+        else
+            state = states.STOPPED;
     }
     int lasBreathID;
     void SetBreath(int id)
@@ -35,60 +62,85 @@ public class RunUIManager : MonoBehaviour
         lasBreathID = id;
         Events.PlaySound("breath", "breath" + id, true);
     }
+    void InitRunning()
+    {
+        anim.Play("stepRythmBarOn");
+        rythm = initialRythm;
+        state = states.RUNNING;
+    }
     public void OnKeyPressed(string key)
-    {        
-        if (lastKeyPressedTime != 0)
+    {
+        if (state == states.STOPPED)
+            return;
+
+        rythm -= rythmAcceleration/2;
+        if (rythm < realRythm)
+            rythm = realRythm;
+
+
+        if (lastKeyPressedTime == 0)
         {
+            lastKeyPressedTime = Time.time - rythm;
+        }
+
             float newDeltaTime = Time.time - lastKeyPressedTime;
-            if (deltaTime != 0)
+          
+            float diff = Mathf.Abs(rythm - newDeltaTime);
+            if (diff < 0.25f)
             {
-                float diff = Mathf.Abs(rythm - newDeltaTime);
-                if (diff < 0.25f)
-                {
-                    myRythm = Mathf.Lerp(myRythm, rythm, 0.5f);
-                    barColor = Color.green;
-                    SetBreath(1);
-                }
-                else
-                {
-                    if(rythm> newDeltaTime)
-                        SetBreath(2);
-                    barColor = Color.red;
-                    if (newDeltaTime > rythm)
-                        myRythm -= variation;
-                    else myRythm += variation;
-                }
-
-                myDesaceleration = 0;
-
-                if (myRythm < 0) myRythm = 0;
-                else if (myRythm > 1) myRythm = 1;
+                myRythm = Mathf.Lerp(myRythm, rythm, 0.5f);
+                barColor = Color.green;
+                SetBreath(1);
             }
+            else
+            {
+                if(rythm> newDeltaTime)
+                    SetBreath(2);
+                barColor = Color.red;
+                if (newDeltaTime > rythm)
+                    myRythm -= variation;
+                else myRythm += variation;
+            }
+
+            myDesaceleration = 0;
+
+            if (myRythm < 0) myRythm = 0;
+            else if (myRythm > 1) myRythm = 1;
+            
             deltaTime = newDeltaTime;
             
-        } else
-        {
-            myDesaceleration = 0;
-        }
+        
         lastKeyPressedTime = Time.time;
         switch (key)
         {
+            case "space":
+                isLeftStep = !isLeftStep;
+                if(isLeftStep)
+                    Events.PlaySound("steps", "step1", false);
+                else
+                    Events.PlaySound("steps", "step2", false);
+                break;
+                break;
             case "Z": buttonZ.OnActive(); Events.PlaySound("steps", "step1", false); break;
             case "X": buttonX.OnActive(); Events.PlaySound("steps", "step2", false); break;
         }
-
     }
+    bool isLeftStep;
 
     float rot_z;
     void Update()
     {
-        UpdateBar();
+     
 
         myDesaceleration += desaceleration;
         myRythm -= myDesaceleration * Time.deltaTime;
         if (myRythm < 0)
             myRythm = 0;
-        //field.text = myRythm.ToString();
+        character.UpdateSpeed(myRythm);
+
+        if (state == states.RUNNING)
+            UpdateBar();
+
         Vector3 rot = arrow.transform.localEulerAngles;
         if (rot_z != 0)
             rot_z = Mathf.Lerp(rot_z, myRythm * 180, 0.1f);
@@ -96,22 +148,58 @@ public class RunUIManager : MonoBehaviour
             rot_z = 0.25f;
         rot.z = rot_z;
         arrow.transform.localEulerAngles = -rot;
-        character.UpdateSpeed(myRythm);
+
+
+        if (character.speed > 9.2f && state == states.RUNNING)
+        {
+            Events.RunningState(false);
+            barColor = Color.red;
+            Events.ChangeVolume("ui", 0f);
+            anim.Play("stepRythmBarOff");
+        }
+        else if (state == states.RUNNING)
+        {
+            
+            if (character.speed >= 0.25f)
+            {
+                if (!isRunning)
+                    Events.ChangeVolume("ui", 0.2f);
+                isRunning = true;
+            }
+            else if (isRunning)
+            {
+                isRunning = false;
+                Events.ChangeVolume("ui", 0.12f);
+            }
+        }
     }
 
 
     float timer;
     float barAlpha = 0;    
     Color barColor;
+    bool isRunning;
     void UpdateBar()
     {
         timer += Time.deltaTime;
         if (timer > rythm)
         {
-            anim.Play("stepRythmBar");
+            if (character.speed < 4f)
+            {
+                rythm += rythmAcceleration;
+                if (rythm > initialRythm)
+                    rythm = initialRythm;
+            }
+
+            Events.PlaySound("ui", "kick", false);
+
+            if (character.speed >= 0.25f)
+                anim.Play("stepRythmBar");  
+           
+                
             timer = 0;
             barAlpha = 1;
-            Events.PlaySound("ui", "kick", false);
+            
         }
         barAlpha -= Time.deltaTime * 2;
         if (barAlpha < 0)
