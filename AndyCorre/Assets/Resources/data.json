@@ -6,16 +6,18 @@
          "sprite_url":"",
          "pos_x":2,
          "content":[
-            {"text":"Veíamos mucha tele juntas. ¿Qué más podíamos hacer juntas tanto tiempo?"},
-            {"text":"Mamá pedía documentales sobre animales. 'Pero tranquilitos'"},
-			{"text":"No le gustaba ver escenas sangrientas de caza."},
-			{"text": "En sus últimos días, creía que los animales estaban ahí con ella."},
-			{"text": "Quería levantarse a tocarlos. Decía que ellos le hablaban."},
+            {"text":"Veíamos mucha tele juntas. ¿Qué más podíamos hacer juntas tanto tiempo?", "audio":"115"},
+            {"text":"Mamá pedía documentales sobre animales. 'Pero tranquilitos'", "audio": "125"},
+			{"text":"No le gustaba ver escenas sangrientas de caza.", "audio": "125b"},
+			{"text": "En sus últimos días, creía que los animales estaban ahí con ella.", "audio": "135"},
+			{"text": "Quería levantarse a tocarlos.", "audio": "145"},
+			{"text": "Decía que ellos le hablaban.", "audio": "155"},
             {
                "multiplechoice":[
                   {
                      "text":"A la yegua gris le oyó murmurar...",
                      "goto_id":10
+
                   },
                   {
                      "text":"El perrito no podía creer...",
@@ -29,15 +31,15 @@
             },
             {
                "text":"De vez en cuando me gusta que abracen mi cuello.",
-               "id":10
+               "id":10, "audio": "165"
             },
             {
                "text":"Que estuvieran ahí encerrados cuando afuera había semejante solazo.",
-               "id":20
+               "id":20, "audio": "177"
             },
             {
                "text":"¿Ya elegiste con qué vestido te vas a despedir?",
-               "id":30
+               "id":30, "audio": "189"
             }
          ]
       },
@@ -47,10 +49,11 @@
          "sprite_url":"",
          "pos_x":-2,
          "content":[
-            { "text":"En la cuenta queda poco dinero."  },
-            { "text":"Dejaron de depositar su jubilación este mes. Igual, apenas alcanzaba."  },
-			{ "text":"Tengo que terminar esa traducción, pero no puedo concentrarme."  },
-			{ "text":"Héctor llamó de nuevo por la entrevista de trabajo..."  },		
+            { "text":"En la cuenta queda poco dinero.", "audio" :"241"  },
+            { "text":"Dejaron de depositar su jubilación este mes.", "audio": "242"  },
+			{ "text":"Igual, apenas alcanzaba.", "audio": "243"  },
+			{ "text":"Tengo que terminar esa traducción, pero no puedo concentrarme.", "audio": "244"  },
+			{ "text":"Héctor llamó de nuevo por la entrevista de trabajo...", "audio": "245"  },		
             {
                "multiplechoice":[
                   {
@@ -69,15 +72,15 @@
             },
             {
                "text":"",
-               "id":10
+               "id":10, "audio": "246"
             },
             {
                "text":"",
-               "id":20
+               "id":20, "audio": "247"
             },
             {
-               "text":"No estoy segura de que sea buena idea....",
-               "id":30
+               "text":"",
+               "id":30, "audio": "248"
             }
          ]
       },
@@ -87,10 +90,10 @@
          "sprite_url":"",
          "pos_x":2,
          "content":[
-            { "text":"Mamá volvía siempre muy tarde de su trabajo, a la madrugada."  },
-            { "text":"A veces yo me despertaba antes de que llegue y no podía volverme a dormir. Entonces la esperaba."  },
-			{ "text":"Cuando ella entraba a casa y me veía, siempre me hacía el mismo chiste."  },
-			{ "text":"¿Ya despierta? ¿O todavía?"  },		
+            { "text":"Mamá volvía siempre muy tarde de su trabajo, a la madrugada." , "audio" :"314" },
+            { "text":"A veces yo me despertaba antes de que llegue y no podía volverme a dormir. Entonces la esperaba." , "audio": "324" },
+			{ "text":"Cuando ella entraba a casa y me veía, siempre me hacía el mismo chiste." , "audio": "334" },
+			{ "text":"¿Ya despierta? ¿O todavía?" , "audio": "344" },		
             {
                "multiplechoice":[
                   {
@@ -109,21 +112,21 @@
             },
             {
                "text":"Pero solo dura algunos días. Y más tarde es imposible.",
-               "id":10
+               "id":10, "audio": "357"
             },
 			 {
-               "text":"Solo queda la sensación inútil de que podría haber ocurrido algo."
+               "text":"Solo queda la sensación inútil de que podría haber ocurrido algo.", "audio": "357b"
             },
             {
                "text":"Era como si aquello le estuviera pasando a otra persona.",
-               "id":20
+               "id":20, "audio": "367"
             },
             {
                "text":"Y me pregunto si todavía está acá, viviendo conmigo.",
-               "id":30
+               "id":30, "audio": "377"
             },
 			{
-               "text":"O si ya se fue. La duda dura pocos segundos."
+               "text":"O si ya se fué. Pero no dura mucho esa duda.", "audio": "377b"
             }
          ]
       },
@@ -133,11 +136,11 @@
          "sprite_url":"",
          "pos_x":-2,
          "content":[
-            { "text":"Mi mamá odiaba su cuerpo."  },
-            { "text":"Nunca la escuché decirlo, pero se notaba."  },
-			{ "text":"Nunca se me ocurrió que fuese algo de la vejez."  },
-			{ "text":"Parecía que ese sentimiento había nacido con ella."  },	
-			{"text": "Con frecuencia me decía que le encantaba mi cuerpo." },
+            { "text":"Mi mamá odiaba su cuerpo." , "audio" :"415" },
+            { "text":"Nunca la escuché decirlo, pero se notaba." , "audio" :"425" },
+			{ "text":"No se me ocurrió que fuese algo de la vejez.", "audio": "435"  },
+			{ "text":"Parecía que ese sentimiento había nacido con ella.", "audio": "445"  },	
+			{ "text": "En cambio me decía que le encantaba el mío, mi cuerpo.", "audio": "455" },
             {
                "multiplechoice":[
                   {
@@ -145,7 +148,7 @@
                      "goto_id":10
                   },
                   {
-                     "text":"Solía mejorar mucho mis días.",
+                     "text":"Me hacía muy bien",
                      "goto_id":20
                   },
                   {
@@ -155,16 +158,16 @@
                ]
             },
             {
-               "text":"Estaba demasiado ocupada en mantener la beca como para pensar en mi cuerpo.",
-               "id":10
+               "text":"Yo demasiado ocupada en mantener la beca como para pensar en eso.",
+               "id":10, "audio" :"456"
             },
 			 {
-               "text":"Fui terriblemente insegura, y esas palabras calmaban mi ansiedad como si fuera magia.",
-			   "id":20
+               "text":"Yo era muy insegura, y esas palabras calmaban mi ansiedad como si fuera magia.",
+			   "id":20, "audio": "466"
             },
             {
-               "text":"Había heredado esa costumbre. Nuestros cuerpos se parecían cada vez más a las peras.",
-               "id":30
+               "text":"Pero había heredado ese odio. Nuestros cuerpos se parecían cada vez más a las peras.",
+               "id":30, "audio" :"476"
             }
          ]
       }

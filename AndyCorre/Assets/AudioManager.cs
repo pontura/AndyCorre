@@ -40,9 +40,16 @@ public class AudioManager : MonoBehaviour
     void PlaySound(string sourceName, string audioName, bool loop)
     {
         AudioSource audioSource = GetAudioSource(sourceName);
-        audioSource.clip = Resources.Load<AudioClip>("Audio/" + audioName) as AudioClip;
-        audioSource.Play();
-        audioSource.loop = loop;
+        if (sourceName == "voices")
+        {
+            StartCoroutine(LoadFromStreamingAssets(audioSource, audioName));
+        }
+        else
+        {           
+            audioSource.clip = Resources.Load<AudioClip>("Audio/" + audioName) as AudioClip;
+            audioSource.Play();
+            audioSource.loop = loop;
+        }
     }
     AudioSource GetAudioSource(string sourceName)
     {
@@ -79,4 +86,16 @@ public class AudioManager : MonoBehaviour
             }
         }     
     }
+
+    IEnumerator LoadFromStreamingAssets(AudioSource audioSource, string audioName)
+    {
+        string url = Application.streamingAssetsPath + "/audios/" + audioName;
+        using (var www = new WWW(url))
+        {
+            yield return www;
+            audioSource.clip = www.GetAudioClip();
+            audioSource.Play();
+        }
+    }
+
 }

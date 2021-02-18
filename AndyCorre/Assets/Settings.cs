@@ -10,7 +10,7 @@ public class Settings : MonoBehaviour
 
     public float distanceBetweenContentText;
     public float distanceByLetters;
-
+    public float timeToFinishLastText;
 
     public float speedToReadRunSignalsByLetter;
     public float speedToReadRunSignals;
@@ -47,6 +47,7 @@ public class Settings : MonoBehaviour
         public bool done;
         public int id;
         [HideInInspector] public bool isDisparador;
+        public string audio;
         public int disparador_id;
         public float distance;
         public string text;

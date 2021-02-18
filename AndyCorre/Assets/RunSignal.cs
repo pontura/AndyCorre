@@ -65,7 +65,7 @@ public class RunSignal : MonoBehaviour
         else
             image.sprite = data.sprite;
         if (!data.isDisparador)
-            fillImage.fillAmount = 0.05f;
+            fillImage.fillAmount = 0f;
     }
     void SetBarOff()
     {
@@ -92,12 +92,13 @@ public class RunSignal : MonoBehaviour
     float barTo;
     public void SetOn(int id, int total)
     {
+        Events.PlaySound("voices", data.audio + ".wav", false);
         Events.ChangeCursor(CursorUI.types.READ, fieldColor);
         Events.PlaySound("ui", "signalOn", false);
         StopAllCoroutines();
         state = states.ON;
         SetCanvasAlpha(1);
-        bar.fillAmount = 0;
+        bar.fillAmount = 0f;
 
         id++;
         total++;
@@ -162,7 +163,6 @@ public class RunSignal : MonoBehaviour
                     
                 else filled = 1;
                 fillImage.fillAmount = filled;
-                print("filled " + filled);
             }
             pos.z = Mathf.Lerp(pos.z, target.transform.position.z + settings.distance_z, Time.deltaTime * (cam_rotation / settings.rotationFreeze));
         }

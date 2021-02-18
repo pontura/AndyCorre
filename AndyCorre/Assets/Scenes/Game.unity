@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &46556815
 RectTransform:
   m_ObjectHideFlags: 0
@@ -753,7 +753,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 39.899994}
+  m_AnchoredPosition: {x: 0, y: 43.11}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!111 &453700575
@@ -1426,7 +1426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &830189014
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2043,12 +2043,13 @@ MonoBehaviour:
   - {r: 0.53626734, g: 0.67942274, b: 0.9716981, a: 1}
   distanceBetweenContentText: 25
   distanceByLetters: 12
+  timeToFinishLastText: 8
   speedToReadRunSignalsByLetter: 3.5
   speedToReadRunSignals: 2
   maxSpeed: 10
   desaceleration: 2
   time_to_get_dark: 10
-  speed_to_lights: 2
+  speed_to_lights: 18
   rotationFactor: 0.15
   signalsSeparationY: 0.1
   runSignalSettings:
@@ -2061,6 +2062,7 @@ MonoBehaviour:
   - done: 0
     id: 0
     isDisparador: 0
+    audio: 
     disparador_id: 0
     distance: 25
     text: Ese caballo quiere decirme algo
@@ -2071,6 +2073,7 @@ MonoBehaviour:
   - done: 0
     id: 1
     isDisparador: 0
+    audio: 
     disparador_id: 0
     distance: 25
     text: "\xBFVolver a trabajar?"
@@ -2081,6 +2084,7 @@ MonoBehaviour:
   - done: 0
     id: 2
     isDisparador: 0
+    audio: 
     disparador_id: 0
     distance: 25
     text: "\xBFTodav\xEDa despierta?"
@@ -2092,6 +2096,7 @@ MonoBehaviour:
   - done: 0
     id: 0
     isDisparador: 0
+    audio: 
     disparador_id: 0
     distance: 25
     text: "Ve\xEDamos mucha tele juntas. \xBFQu\xE9 m\xE1s pod\xEDamos hacer juntas
@@ -2103,6 +2108,7 @@ MonoBehaviour:
   - done: 0
     id: 1
     isDisparador: 0
+    audio: 
     disparador_id: 0
     distance: 25
     text: "Mam\xE1 ped\xEDa documentales sobre animales. \"Pero tranquilitos\". "
@@ -2113,6 +2119,7 @@ MonoBehaviour:
   - done: 0
     id: 2
     isDisparador: 0
+    audio: 
     disparador_id: 0
     distance: 25
     text: No le gustaba ver escenas sangrientas de caza.
@@ -2123,6 +2130,7 @@ MonoBehaviour:
   - done: 0
     id: 3
     isDisparador: 0
+    audio: 
     disparador_id: 0
     distance: 25
     text: "En sus \xFAltimos d\xEDas, cre\xEDa que los animales estaban ah\xED con
@@ -2134,6 +2142,7 @@ MonoBehaviour:
   - done: 0
     id: 4
     isDisparador: 0
+    audio: 
     disparador_id: 0
     distance: 25
     text: "Quer\xEDa levantarse a tocarlos. Dec\xEDa que ellos le hablaban."
@@ -2144,6 +2153,7 @@ MonoBehaviour:
   - done: 0
     id: 5
     isDisparador: 0
+    audio: 
     disparador_id: 0
     distance: 25
     text: 
@@ -2160,6 +2170,7 @@ MonoBehaviour:
   - done: 0
     id: 0
     isDisparador: 0
+    audio: 
     disparador_id: 1
     distance: 25
     text: En la cuenta queda poco dinero.
@@ -2170,6 +2181,7 @@ MonoBehaviour:
   - done: 0
     id: 1
     isDisparador: 0
+    audio: 
     disparador_id: 1
     distance: 25
     text: "Dejaron de depositar su jubilaci\xF3n este mes. Igual, apenas alcanzaba."
@@ -2180,6 +2192,7 @@ MonoBehaviour:
   - done: 0
     id: 2
     isDisparador: 0
+    audio: 
     disparador_id: 1
     distance: 25
     text: "Tengo que terminar esa traducci\xF3n, pero no puedo concentrarme."
@@ -2190,6 +2203,7 @@ MonoBehaviour:
   - done: 0
     id: 3
     isDisparador: 0
+    audio: 
     disparador_id: 1
     distance: 25
     text: "H\xE9ctor llam\xF3 de nuevo por la entrevista de trabajo..."
@@ -2200,6 +2214,7 @@ MonoBehaviour:
   - done: 0
     id: 4
     isDisparador: 0
+    audio: 
     disparador_id: 1
     distance: 25
     text: 
@@ -2216,6 +2231,7 @@ MonoBehaviour:
   - done: 0
     id: 101
     isDisparador: 0
+    audio: 
     disparador_id: 0
     distance: 25
     text: De vez en cuando me gusta que abracen mi cuello.
@@ -2226,6 +2242,7 @@ MonoBehaviour:
   - done: 0
     id: 201
     isDisparador: 0
+    audio: 
     disparador_id: 0
     distance: 25
     text: "Que estuvieran ah\xED encerrados cuando afuera hab\xEDa semejante solazo."
@@ -2236,6 +2253,7 @@ MonoBehaviour:
   - done: 0
     id: 301
     isDisparador: 0
+    audio: 
     disparador_id: 0
     distance: 25
     text: "\xBFYa elegiste con qu\xE9 vestido te vas a despedir? "
@@ -2246,6 +2264,7 @@ MonoBehaviour:
   - done: 0
     id: 1101
     isDisparador: 0
+    audio: 
     disparador_id: 1
     distance: 25
     text: mmm...
@@ -2256,6 +2275,7 @@ MonoBehaviour:
   - done: 0
     id: 1201
     isDisparador: 0
+    audio: 
     disparador_id: 1
     distance: 25
     text: mmm...
@@ -2266,6 +2286,7 @@ MonoBehaviour:
   - done: 0
     id: 1301
     isDisparador: 0
+    audio: 
     disparador_id: 1
     distance: 25
     text: mmm...
@@ -2276,6 +2297,7 @@ MonoBehaviour:
   - done: 0
     id: 0
     isDisparador: 0
+    audio: 
     disparador_id: 2
     distance: 25
     text: "Mam\xE1 volv\xEDa siempre muy tarde de su trabajo, a la madrugada."
@@ -2286,6 +2308,7 @@ MonoBehaviour:
   - done: 0
     id: 1
     isDisparador: 0
+    audio: 
     disparador_id: 2
     distance: 25
     text: "A veces yo me despertaba antes de que llegue y no pod\xEDa..."
@@ -2296,6 +2319,7 @@ MonoBehaviour:
   - done: 0
     id: 2
     isDisparador: 0
+    audio: 
     disparador_id: 2
     distance: 25
     text: ...volverme a dormir. Entonces la esperaba.
@@ -2306,6 +2330,7 @@ MonoBehaviour:
   - done: 0
     id: 3
     isDisparador: 0
+    audio: 
     disparador_id: 2
     distance: 25
     text: "Cuando ella entraba a casa y me ve\xEDa, siempre me hac\xEDa el mismo
@@ -2317,6 +2342,7 @@ MonoBehaviour:
   - done: 0
     id: 4
     isDisparador: 0
+    audio: 
     disparador_id: 2
     distance: 25
     text: "\"\xBFYa despierta? \xBFO todav\xEDa?\""
@@ -2327,6 +2353,7 @@ MonoBehaviour:
   - done: 0
     id: 5
     isDisparador: 0
+    audio: 
     disparador_id: 2
     distance: 25
     text: 
@@ -2343,6 +2370,7 @@ MonoBehaviour:
   - done: 0
     id: 2101
     isDisparador: 0
+    audio: 
     disparador_id: 2
     distance: 25
     text: "Pero solo dura algunos d\xEDas. Y m\xE1s tarde es imposible. "
@@ -2353,6 +2381,7 @@ MonoBehaviour:
   - done: 0
     id: 2102
     isDisparador: 0
+    audio: 
     disparador_id: 2
     distance: 25
     text: "Solo queda la sensaci\xF3n in\xFAtil de que podr\xEDa haber ocurrido algo."
@@ -2363,6 +2392,7 @@ MonoBehaviour:
   - done: 0
     id: 2201
     isDisparador: 0
+    audio: 
     disparador_id: 2
     distance: 25
     text: Era como si aquello le estuviera pasando a otra persona.
@@ -2373,6 +2403,7 @@ MonoBehaviour:
   - done: 0
     id: 2301
     isDisparador: 0
+    audio: 
     disparador_id: 2
     distance: 25
     text: "Y me pregunto si todav\xEDa est\xE1 ac\xE1, viviendo conmigo. O si ya
@@ -2424,19 +2455,22 @@ MonoBehaviour:
   all:
   - sourceName: ui
     audioSource: {fileID: 0}
-    volume: 0.2
+    volume: 0.15
   - sourceName: steps
     audioSource: {fileID: 0}
-    volume: 0.2
+    volume: 0.15
   - sourceName: music
     audioSource: {fileID: 0}
-    volume: 1
+    volume: 0.6
   - sourceName: park
     audioSource: {fileID: 0}
-    volume: 1
+    volume: 0.7
   - sourceName: breath
     audioSource: {fileID: 0}
-    volume: 0.25
+    volume: 0.2
+  - sourceName: voices
+    audioSource: {fileID: 0}
+    volume: 1
 --- !u!1 &1159911322
 GameObject:
   m_ObjectHideFlags: 0
@@ -2549,7 +2583,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1205336114}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -2701,7 +2735,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1339052979
 RectTransform:
   m_ObjectHideFlags: 0

@@ -150,8 +150,8 @@ public class RunSignalsManager : MonoBehaviour
 
         if(state != states.NONE)
         {
-            timeInRama += Time.deltaTime;
-            darkValue = timeInRama / time_to_get_dark;                
+            timeInRama += Time.deltaTime / time_to_get_dark;
+            darkValue = timeInRama;                
         } else
         {
             darkValue -= Time.deltaTime * speed_to_lights;
@@ -239,7 +239,7 @@ public class RunSignalsManager : MonoBehaviour
         disparadorID = rs.data.id;
         Events.PlaySound("music", "theme1", true);
         Events.ChangeVolume("music", 0);
-        Events.FadeVolume("music", 1, 5);
+        Events.FadeVolume("music", 0.3f, 7);
         SetNewSignals();        
     }
     void SetNewSignals()
@@ -267,7 +267,7 @@ public class RunSignalsManager : MonoBehaviour
             actualSignal = null;
             nextDistance = distance + viewDistance;
             Data.Instance.settings.SetDisparadorDone(disparadorID);
-            Invoke("ForceFinishDisparador", 4);
+            Invoke("ForceFinishDisparador", Data.Instance.settings.timeToFinishLastText);
         }
         else
         {
