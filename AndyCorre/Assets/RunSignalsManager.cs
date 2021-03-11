@@ -283,6 +283,7 @@ public class RunSignalsManager : MonoBehaviour
         actualSignal = Data.Instance.settings.GetNextDisparador();
         if(actualSignal == null)
         {
+            Events.ChangeGameState(Game.states.AVATAR_TALK);
             Debug.Log("GAME OVER");
             return;
         }

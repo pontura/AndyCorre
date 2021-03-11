@@ -1,0 +1,1002 @@
+fileFormatVersion: 2
+guid: 0f1eed8ea3f7a854f9baa7a59bb37e55
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Cartoon_Female_capris_2k
+    second: {fileID: 2800000, guid: 5d51b5a6915e9594db5ff11e1a1c3a8f, type: 3}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: Alexis:Hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftUpLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightUpLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftLeg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightLeg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftFoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:Spine1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftShoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightShoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftForeArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftToeBase
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightToeBase
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftEye
+      humanName: LeftEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightEye
+      humanName: RightEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:Jaw
+      humanName: Jaw
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftHandThumb1
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftHandThumb2
+      humanName: Left Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftHandThumb3
+      humanName: Left Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftHandIndex1
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftHandIndex2
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftHandIndex3
+      humanName: Left Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftHandMiddle1
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftHandMiddle2
+      humanName: Left Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftHandMiddle3
+      humanName: Left Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftHandRing1
+      humanName: Left Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftHandRing2
+      humanName: Left Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftHandRing3
+      humanName: Left Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftHandPinky1
+      humanName: Left Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftHandPinky2
+      humanName: Left Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:LeftHandPinky3
+      humanName: Left Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightHandThumb1
+      humanName: Right Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightHandThumb2
+      humanName: Right Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightHandThumb3
+      humanName: Right Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightHandIndex1
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightHandIndex2
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightHandIndex3
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightHandMiddle1
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightHandMiddle2
+      humanName: Right Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightHandMiddle3
+      humanName: Right Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightHandRing1
+      humanName: Right Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightHandRing2
+      humanName: Right Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightHandRing3
+      humanName: Right Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightHandPinky1
+      humanName: Right Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightHandPinky2
+      humanName: Right Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:RightHandPinky3
+      humanName: Right Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Alexis:Spine2
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Mixamo-Alexis_HiRes(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis_Geo_High
+      parentName: Mixamo-Alexis_HiRes(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:Hips
+      parentName: Mixamo-Alexis_HiRes(Clone)
+      position: {x: -0, y: 0.963794, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:Spine
+      parentName: Alexis:Hips
+      position: {x: 2.646978e-25, y: 0.092263184, z: 0.015771331}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:Spine1
+      parentName: Alexis:Spine
+      position: {x: -0, y: 0.16254029, z: -0.0016560555}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:Spine2
+      parentName: Alexis:Spine1
+      position: {x: -0, y: 0.13639648, z: -0.01292305}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:Neck
+      parentName: Alexis:Spine2
+      position: {x: -0, y: 0.13877441, z: -0.043541867}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:Neck1
+      parentName: Alexis:Neck
+      position: {x: -0, y: 0.04340027, z: 0.009268952}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:Head
+      parentName: Alexis:Neck1
+      position: {x: -1.0587912e-24, y: 0.04026611, z: 0.008585205}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:HeadTop_End
+      parentName: Alexis:Head
+      position: {x: -5.1704583e-18, y: 0.17886597, z: 0.0012312889}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftEye
+      parentName: Alexis:Head
+      position: {x: -0.035717, y: 0.07657112, z: 0.1158223}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightEye
+      parentName: Alexis:Head
+      position: {x: 0.035717, y: 0.07657112, z: 0.1158223}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:Jaw
+      parentName: Alexis:Head
+      position: {x: 1.7347234e-20, y: 0.0008416216, z: 0.052275117}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:TongueBack
+      parentName: Alexis:Jaw
+      position: {x: -1.7347234e-20, y: -0.008180609, z: 0.05575051}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:TongueTip
+      parentName: Alexis:Jaw
+      position: {x: -1.7347234e-20, y: -0.013968128, z: 0.08009871}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftLipLower
+      parentName: Alexis:Jaw
+      position: {x: -0.014250817, y: -0.008844981, z: 0.09685487}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:JawEND
+      parentName: Alexis:Jaw
+      position: {x: -1.7347234e-20, y: -0.023480615, z: 0.090821125}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightLipLower
+      parentName: Alexis:Jaw
+      position: {x: 0.014250817, y: -0.008844981, z: 0.09685487}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightLipCorner
+      parentName: Alexis:Jaw
+      position: {x: 0.036434226, y: 0.0017408646, z: 0.080004096}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftLipCorner
+      parentName: Alexis:Jaw
+      position: {x: -0.036434226, y: 0.0017408646, z: 0.080004096}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftLipUpper
+      parentName: Alexis:Head
+      position: {x: -0.014501322, y: 0.0051858495, z: 0.15613382}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftNostril
+      parentName: Alexis:Head
+      position: {x: -0.021452079, y: 0.024443455, z: 0.15501378}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftCheek
+      parentName: Alexis:Head
+      position: {x: -0.049222223, y: 0.03321964, z: 0.13351567}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftEyelidLower
+      parentName: Alexis:Head
+      position: {x: -0.035717, y: 0.07657112, z: 0.1158223}
+      rotation: {x: -0.034899496, y: 0, z: -0, w: 0.99939084}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftEyelidUpper
+      parentName: Alexis:Head
+      position: {x: -0.035717, y: 0.07657112, z: 0.1158223}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftInnerBrow
+      parentName: Alexis:Head
+      position: {x: -0.018610438, y: 0.09678956, z: 0.1522975}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftIOuterBrow
+      parentName: Alexis:Head
+      position: {x: -0.053020533, y: 0.09444366, z: 0.1346053}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightInnerBrow
+      parentName: Alexis:Head
+      position: {x: 0.018610438, y: 0.09678956, z: 0.1522975}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightIOuterBrow
+      parentName: Alexis:Head
+      position: {x: 0.053020533, y: 0.09444366, z: 0.1346053}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightEyelidUpper
+      parentName: Alexis:Head
+      position: {x: 0.035717, y: 0.07657112, z: 0.1158223}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightEyelidLower
+      parentName: Alexis:Head
+      position: {x: 0.035717, y: 0.07657112, z: 0.1158223}
+      rotation: {x: -0.034899496, y: 0, z: -0, w: 0.99939084}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightCheek
+      parentName: Alexis:Head
+      position: {x: 0.049222223, y: 0.03321964, z: 0.13351567}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightNostril
+      parentName: Alexis:Head
+      position: {x: 0.021452079, y: 0.024443455, z: 0.15501378}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightLipUpper
+      parentName: Alexis:Head
+      position: {x: 0.014501322, y: 0.0051858495, z: 0.15613382}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftShoulder
+      parentName: Alexis:Spine2
+      position: {x: -0.06144226, y: 0.10187011, z: -0.037932433}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftArm
+      parentName: Alexis:LeftShoulder
+      position: {x: -0.09019056, y: -0.011130053, z: -0.017934687}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftForeArm
+      parentName: Alexis:LeftArm
+      position: {x: -0.2768701, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftHand
+      parentName: Alexis:LeftForeArm
+      position: {x: -0.27873778, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftHandThumb1
+      parentName: Alexis:LeftHand
+      position: {x: -0.02517768, y: -0.009366607, z: 0.025136683}
+      rotation: {x: -0.061311275, y: 0.041609522, z: -0.05300312, w: 0.9958415}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftHandThumb2
+      parentName: Alexis:LeftHandThumb1
+      position: {x: -0.033088524, y: -0.011492302, z: 0.029253135}
+      rotation: {x: 0.01313277, y: 0.05594676, z: 0.036833603, w: 0.99766773}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftHandThumb3
+      parentName: Alexis:LeftHandThumb2
+      position: {x: -0.028279377, y: -0.0045737503, z: 0.017029954}
+      rotation: {x: 0.00017367951, y: -0.031551402, z: -0.008185465, w: 0.99946856}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftHandThumb4
+      parentName: Alexis:LeftHandThumb3
+      position: {x: -0.03152093, y: -0.006866996, z: 0.025800489}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftHandMiddle1
+      parentName: Alexis:LeftHand
+      position: {x: -0.10194804, y: 0.007181669, z: 0.009781615}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftHandMiddle2
+      parentName: Alexis:LeftHandMiddle1
+      position: {x: -0.039601438, y: -0.00047074724, z: 0.00064152275}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftHandMiddle3
+      parentName: Alexis:LeftHandMiddle2
+      position: {x: -0.028600143, y: -0.002261175, z: 0.000055149605}
+      rotation: {x: -0.000017042745, y: 0.0012466416, z: 0.042275038, w: 0.9991053}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftHandMiddle4
+      parentName: Alexis:LeftHandMiddle3
+      position: {x: -0.019995073, y: 0.00169815, z: -0.00005813449}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftHandIndex1
+      parentName: Alexis:LeftHand
+      position: {x: -0.1007241, y: 0.0048958696, z: 0.027610935}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftHandIndex2
+      parentName: Alexis:LeftHandIndex1
+      position: {x: -0.037340894, y: 3.847191e-11, z: 0.0005125244}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftHandIndex3
+      parentName: Alexis:LeftHandIndex2
+      position: {x: -0.028737163, y: -0.0013641473, z: 2.220446e-18}
+      rotation: {x: 0.000050174218, y: -0.0010569075, z: 0.051735375, w: 0.99866027}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftHandIndex4
+      parentName: Alexis:LeftHandIndex3
+      position: {x: -0.019371964, y: 0.002616176, z: 0.000072233735}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftHandRing1
+      parentName: Alexis:LeftHand
+      position: {x: -0.099302255, y: 0.0059195296, z: -0.009586181}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftHandRing2
+      parentName: Alexis:LeftHandRing1
+      position: {x: -0.038645092, y: -0.0019895025, z: -0.00014745106}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftHandRing3
+      parentName: Alexis:LeftHandRing2
+      position: {x: -0.029119985, y: -0.001348519, z: -0.0002840692}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftHandRing4
+      parentName: Alexis:LeftHandRing3
+      position: {x: -0.020833196, y: 0.0006301085, z: -0.00019996734}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftHandPinky1
+      parentName: Alexis:LeftHand
+      position: {x: -0.096779995, y: -0.0011913758, z: -0.025525266}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftHandPinky2
+      parentName: Alexis:LeftHandPinky1
+      position: {x: -0.030938145, y: -0.0007621263, z: 0.00016794243}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftHandPinky3
+      parentName: Alexis:LeftHandPinky2
+      position: {x: -0.027224889, y: -0.00064053317, z: 0.00023157065}
+      rotation: {x: 0.00013737744, y: 0.00276848, z: 0.023809094, w: 0.9997127}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftHandPinky4
+      parentName: Alexis:LeftHandPinky3
+      position: {x: -0.017282737, y: 0.0018108484, z: -0.0001108392}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightShoulder
+      parentName: Alexis:Spine2
+      position: {x: 0.061401974, y: 0.10187011, z: -0.037932433}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightArm
+      parentName: Alexis:RightShoulder
+      position: {x: 0.09022863, y: -0.011130053, z: -0.017934687}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightForeArm
+      parentName: Alexis:RightArm
+      position: {x: 0.2768701, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightHand
+      parentName: Alexis:RightForeArm
+      position: {x: 0.27873778, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightHandThumb1
+      parentName: Alexis:RightHand
+      position: {x: 0.025177661, y: -0.00936667, z: 0.025136683}
+      rotation: {x: -0.061312106, y: -0.041610274, z: 0.053003848, w: 0.9958414}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightHandThumb2
+      parentName: Alexis:RightHandThumb1
+      position: {x: 0.033088524, y: -0.011492302, z: 0.029253135}
+      rotation: {x: 0.013133451, y: -0.0559461, z: -0.036834437, w: 0.9976677}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightHandThumb3
+      parentName: Alexis:RightHandThumb2
+      position: {x: 0.028279377, y: -0.0045737503, z: 0.017029954}
+      rotation: {x: -0.0006154691, y: 0.041201007, z: 0.0120872045, w: 0.9990777}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightHandThumb4
+      parentName: Alexis:RightHandThumb3
+      position: {x: 0.029963681, y: -0.007021246, z: 0.025459027}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightHandIndex1
+      parentName: Alexis:RightHand
+      position: {x: 0.100724086, y: 0.0048958063, z: 0.027610935}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightHandIndex2
+      parentName: Alexis:RightHandIndex1
+      position: {x: 0.037340894, y: 3.847191e-11, z: 0.0005125244}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightHandIndex3
+      parentName: Alexis:RightHandIndex2
+      position: {x: 0.028737163, y: -0.0013641473, z: 2.220446e-18}
+      rotation: {x: 0.00016506882, y: 0.0034774297, z: -0.01949187, w: 0.99980396}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightHandIndex4
+      parentName: Alexis:RightHandIndex3
+      position: {x: 0.019039625, y: 0.0013644394, z: 0.0004046453}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightHandMiddle1
+      parentName: Alexis:RightHand
+      position: {x: 0.10194802, y: 0.0071816063, z: 0.009781615}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightHandMiddle2
+      parentName: Alexis:RightHandMiddle1
+      position: {x: 0.039601438, y: -0.00047074724, z: 0.00064152275}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightHandMiddle3
+      parentName: Alexis:RightHandMiddle2
+      position: {x: 0.028600143, y: -0.002261175, z: 0.000055149605}
+      rotation: {x: 0.0000025258876, y: -0.00018705582, z: -0.008979758, w: 0.9999597}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightHandMiddle4
+      parentName: Alexis:RightHandMiddle3
+      position: {x: 0.020956457, y: 0.00044641382, z: -0.000003400336}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightHandRing1
+      parentName: Alexis:RightHand
+      position: {x: 0.09930223, y: 0.0059194663, z: -0.009586181}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightHandRing2
+      parentName: Alexis:RightHandRing1
+      position: {x: 0.038645092, y: -0.0019895025, z: -0.00014745106}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightHandRing3
+      parentName: Alexis:RightHandRing2
+      position: {x: 0.029119985, y: -0.001348519, z: -0.0002840692}
+      rotation: {x: 0.000060048693, y: 0.004253157, z: -0.014034466, w: 0.9998925}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightHandRing4
+      parentName: Alexis:RightHandRing3
+      position: {x: 0.021593438, y: 0.001297564, z: 0.00048559456}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightHandPinky1
+      parentName: Alexis:RightHand
+      position: {x: 0.09677997, y: -0.001191439, z: -0.025525266}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightHandPinky2
+      parentName: Alexis:RightHandPinky1
+      position: {x: 0.030938145, y: -0.0007621263, z: 0.00016794243}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightHandPinky3
+      parentName: Alexis:RightHandPinky2
+      position: {x: 0.027224889, y: -0.00064053317, z: 0.00023157065}
+      rotation: {x: 0.00023655494, y: 0.005032309, z: -0.01389219, w: 0.9998908}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightHandPinky4
+      parentName: Alexis:RightHandPinky3
+      position: {x: 0.017246874, y: 0.0014029515, z: 0.0008018882}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftUpLeg
+      parentName: Alexis:Hips
+      position: {x: -0.09633789, y: -0.032732543, z: -0.000000007152557}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftLeg
+      parentName: Alexis:LeftUpLeg
+      position: {x: -0, y: -0.46725097, z: -0.017299652}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftFoot
+      parentName: Alexis:LeftLeg
+      position: {x: -0.00012604713, y: -0.34194335, z: -0.008476867}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftToeBase
+      parentName: Alexis:LeftFoot
+      position: {x: 0.0018328666, y: -0.12183356, z: 0.082822636}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:LeftFootToeBase_End
+      parentName: Alexis:LeftToeBase
+      position: {x: -0, y: -0.00009729385, z: 0.096}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightUpLeg
+      parentName: Alexis:Hips
+      position: {x: 0.09633789, y: -0.032732543, z: -0.000000007152557}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightLeg
+      parentName: Alexis:RightUpLeg
+      position: {x: -0, y: -0.46725097, z: -0.017299652}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightFoot
+      parentName: Alexis:RightLeg
+      position: {x: -0.00012606621, y: -0.34194335, z: -0.008476867}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightToeBase
+      parentName: Alexis:RightFoot
+      position: {x: 0.0018330956, y: -0.12183356, z: 0.082822636}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Alexis:RightFootToeBase_End
+      parentName: Alexis:RightToeBase
+      position: {x: -0.00003194809, y: -0.00009729385, z: 0.096}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

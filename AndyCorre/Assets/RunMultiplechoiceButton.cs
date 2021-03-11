@@ -19,7 +19,29 @@ public class RunMultiplechoiceButton : MonoBehaviour
     Color fieldColor;
     float alphaValue;
     float initialValue = 0.015f;
+    SimpleNPCDialogueSignal npcSignal;
 
+
+    public void InitNpc(SimpleNPCDialogueSignal npcSignal, Settings.SignalDataMultipleContent content, Color fieldColor)
+    {
+        Color barColor = fieldColor;
+        barColor.a = 0.2f;
+        bar.color = barColor;
+
+        bgColor = bg.color;
+        this.fieldColor = fieldColor;
+        speed = Data.Instance.settings.multiplechoiceSpeed;
+        this.npcSignal = npcSignal;
+        this.content = content;
+        field.text = content.text;
+
+        transform.localEulerAngles = Vector3.zero;
+        transform.localPosition = Vector3.zero;
+        transform.localScale = Vector3.one;
+
+        value = initialValue;
+        SetBar();
+    }
     public void Init(RunSignal runSignal, Settings.SignalDataMultipleContent content, Color fieldColor)
     {
         Color barColor = fieldColor;
@@ -95,7 +117,10 @@ public class RunMultiplechoiceButton : MonoBehaviour
     }
     public void PointerEnter()
     {
-        runSignal.OnOverMultiplechoice(this);
+        if(npcSignal != null)
+            npcSignal.OnOverMultiplechoice(this);
+        else
+            runSignal.OnOverMultiplechoice(this);
         alphaValue = 1;
         isOff = false;
         isOver = true;
@@ -105,7 +130,10 @@ public class RunMultiplechoiceButton : MonoBehaviour
     public void Pointerxit()
     {
         isOff = false;
-        runSignal.OnOverMultiplechoice(null);
+        if (npcSignal != null)
+            npcSignal.OnOverMultiplechoice(null);
+        else
+            runSignal.OnOverMultiplechoice(null);
         isOver = false;
         value = initialValue;
         SetBar();
@@ -113,6 +141,9 @@ public class RunMultiplechoiceButton : MonoBehaviour
     public void Clicked()
     {
         isDone = true;
-        runSignal.Clicked(content);
+        if (npcSignal != null)
+            npcSignal.Clicked(content);
+        else
+            runSignal.Clicked(content);
     }
 }

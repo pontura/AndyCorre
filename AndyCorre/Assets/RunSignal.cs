@@ -60,10 +60,10 @@ public class RunSignal : MonoBehaviour
         field.text = data.text;
         field.color = fieldColor;
 
-        if (data.sprite == null)
-            image.enabled = false;
-        else
-            image.sprite = data.sprite;
+        //if (data.sprite == null)
+        //    image.enabled = false;
+        //else
+        //    image.sprite = data.sprite;
         if (!data.isDisparador)
             fillImage.fillAmount = 0f;
     }

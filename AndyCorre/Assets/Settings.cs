@@ -5,6 +5,7 @@ using System;
 
 public class Settings : MonoBehaviour
 {
+    public TextAsset npcTextAsset;
     public TextAsset textAsset;
     public Color[] disparadoresColors;
 
@@ -35,12 +36,23 @@ public class Settings : MonoBehaviour
     public List<SignalData> disparatoresData;
     public List<SignalData> allSignalsData;
 
+    public List<SignalData> disparatoresDataNpc;
+    public List<SignalData> allSignalsDataNpc;
+
     AllData all;
     [Serializable]
-    public class AllData
+    class AllData
     {
         public List<SignalData> all;
     }
+
+    public AllDataNpc allDataNpc;
+    [Serializable]
+    public class AllDataNpc
+    {
+        public List<SignalData> all;
+    }
+
     [Serializable]
     public class SignalData
     {
@@ -48,6 +60,7 @@ public class Settings : MonoBehaviour
         public int id;
         [HideInInspector] public bool isDisparador;
         public string audio;
+        public string character;
         public int disparador_id;
         public float distance;
         public string text;
@@ -112,12 +125,33 @@ public class Settings : MonoBehaviour
                 all.Add(sd);
         return all;
     }
+    public int GetNextDisparadorIDNPC(int disparador_id, int stateToshow) // busca si el proximo disparador es del estado en el que jugaste antes "STATE_1"..
+    {
+        if (disparador_id > allDataNpc.all.Count)
+            return -1;
 
-
+        disparador_id++;
+        SignalData sd = allDataNpc.all[disparador_id];
+        string[] s = sd.text.Split("_"[0]);
+        if (s.Length < 2 || int.Parse(s[1]) == stateToshow)
+            return disparador_id;
+        else
+            return GetNextDisparadorIDNPC(disparador_id, stateToshow);
+    }
+    public List<SignalData> GetSignalsByDisparadorNpc(int disparador_id)
+    {
+        List<SignalData> all = new List<SignalData>();
+        foreach (SignalData sd in allSignalsDataNpc)
+            if (sd.disparador_id == disparador_id)
+                all.Add(sd);
+        return all;
+    }
     void Load()
     {
         all = JsonUtility.FromJson<AllData>(textAsset.text);
+        allDataNpc = JsonUtility.FromJson<AllDataNpc>(npcTextAsset.text);
         SaveData();
+        SaveDataNpc();
         Game.Instance.Init();
     }
     void SaveData()
@@ -166,6 +200,57 @@ public class Settings : MonoBehaviour
             disparadorID++;
         }
     }
+
+
+
+    void SaveDataNpc()
+    {
+        allSignalsDataNpc.Clear();
+        disparatoresDataNpc.Clear();
+        int disparadorID = 0;
+        foreach (SignalData sd in allDataNpc.all)
+        {
+            sd.isDisparador = true;
+            sd.id = disparadorID;
+            sd.disparador_id = disparadorID;
+            int id = 0;
+            disparatoresDataNpc.Add(sd);
+            foreach (SignalData content in sd.content)
+            {
+                if (content.id == 0)
+                {
+                    content.id = id;
+                    id++;
+                }
+                else
+                {
+                    id = content.id;
+                }
+                content.disparador_id = sd.id;
+
+                if (content.distance == 0)
+                {
+                    float d = distanceBetweenContentText;
+                    if (content.id > 0 && content.text != null)
+                        d += ((float)(content.text.Length) * (distanceByLetters / 50));
+
+                    content.distance = d;
+
+                }
+                if (content.id >= 10)
+                {
+                    content.distance = 5; //    multiplechoice answer:
+                }
+
+
+                content.pos_x = sd.pos_x;
+                allSignalsDataNpc.Add(content);
+            }
+            disparadorID++;
+        }
+    }
+
+
     int disparadorArrayPos = 0;
     public SignalData GetNextDisparador()
     {
@@ -173,7 +258,6 @@ public class Settings : MonoBehaviour
         if (disparadorArrayPos >= disparatoresData.Count - 1)
             disparadorArrayPos = 0;
 
-        print("_______GetNextDisparador " + disparadorArrayPos);
         foreach (SignalData sd in disparatoresData)
         {
             if (id == disparadorArrayPos && !sd.done)
@@ -200,7 +284,6 @@ public class Settings : MonoBehaviour
     }
     public void SetDisparadorDone(int disparadorID)
     {
-        print("SetDisparadorDone " + disparadorID);
         foreach(SignalData sd in disparatoresData)
         {
             if (sd.id == disparadorID)
@@ -211,6 +294,20 @@ public class Settings : MonoBehaviour
     {
         int id = 0;
         foreach (SignalData sd in allSignalsData)
+        {
+            if (sd.disparador_id == disparadorID)
+            {
+                id++;
+                if (sd.multiplechoice != null && sd.multiplechoice.Length > 0)
+                    return id;
+            }
+        }
+        return id;
+    }
+    public int GetTotalLinesInDisparadorNpc(int disparadorID)
+    {
+        int id = 0;
+        foreach (SignalData sd in allSignalsDataNpc)
         {
             if (sd.disparador_id == disparadorID)
             {

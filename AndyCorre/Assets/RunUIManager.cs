@@ -52,7 +52,12 @@ public class RunUIManager : MonoBehaviour
         if (isOn)
             InitRunning();
         else
+        {
+            barColor = Color.red;
+            Events.ChangeVolume("ui", 0f);
+            anim.Play("stepRythmBarOff");
             state = states.STOPPED;
+        }
     }
     int lasBreathID;
     void SetBreath(int id)
@@ -153,9 +158,7 @@ public class RunUIManager : MonoBehaviour
         if (character.speed > 9.2f && state == states.RUNNING)
         {
             Events.RunningState(false);
-            barColor = Color.red;
-            Events.ChangeVolume("ui", 0f);
-            anim.Play("stepRythmBarOff");
+
         }
         else if (state == states.RUNNING)
         {
