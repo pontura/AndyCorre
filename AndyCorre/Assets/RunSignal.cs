@@ -43,7 +43,6 @@ public class RunSignal : MonoBehaviour
        
         if (data.multiplechoice != null && data.multiplechoice.Length > 0)
         {
-            Events.ChangeCursor(CursorUI.types.CLICK, fieldColor);
             isMultiplechoice = true;
             foreach (Settings.SignalDataMultipleContent d in data.multiplechoice)
             {
@@ -53,8 +52,7 @@ public class RunSignal : MonoBehaviour
                 multiplechoiceAll.Add(button);
             }
             SetBarOff();
-        } else
-            Events.ChangeCursor(CursorUI.types.READ, fieldColor);
+        } 
 
         settings = Data.Instance.settings.runSignalSettings;
         
@@ -96,7 +94,6 @@ public class RunSignal : MonoBehaviour
     public void SetOn(int id, int total)
     {
         Events.PlaySound("voices", data.audio + ".wav", false);
-        Events.ChangeCursor(CursorUI.types.READ, fieldColor);
         Events.PlaySound("ui", "signalOn", false);
         StopAllCoroutines();
         state = states.ON;
@@ -110,6 +107,11 @@ public class RunSignal : MonoBehaviour
         barTo = (float)id / (float)total;
         if(id > total-1)
             SetBarOff();
+
+        if (data.multiplechoice != null && data.multiplechoice.Length > 0)
+            Events.ChangeCursor(CursorUI.types.CLICK, fieldColor);
+        else
+            Events.ChangeCursor(CursorUI.types.READ, fieldColor);
     }
     float filled;
     void Update()
