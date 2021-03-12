@@ -74,6 +74,7 @@ public class NpcRunner : MonoBehaviour
         state = states.RUNNING;
         Debug.Log("MultiplechoiceSelected: " + content.text);
         signalID = content.goto_id;
+        Game.Instance.AddScore(content.score);
         Talk();
     }
     Settings.SignalData GetSignalByID(int id)
@@ -93,7 +94,7 @@ public class NpcRunner : MonoBehaviour
         disparadorID = Data.Instance.settings.GetNextDisparadorIDNPC(disparadorID);
         Debug.Log("Nuevo disparador: " + disparadorID);
 
-        if (disparadorID == -1 || disparadorID >= Data.Instance.settings.allDataNpc.all.Count)
+        if (disparadorID >= Data.Instance.settings.disparatoresDataNpc.Count || disparadorID == -1 || disparadorID >= Data.Instance.settings.allDataNpc.all.Count)
         {
             state = states.EXIT;
         }

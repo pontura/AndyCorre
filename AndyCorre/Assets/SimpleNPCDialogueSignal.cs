@@ -50,6 +50,7 @@ public class SimpleNPCDialogueSignal : MonoBehaviour
         view_multiplechoice.SetActive(false);
         if (data.multiplechoice != null && data.multiplechoice.Length > 0)
         {
+            Events.ChangeCursor(CursorUI.types.CLICK, fieldColor);
             Utils.RemoveAllChildsIn(view_multiplechoice.transform);
             view_multiplechoice.SetActive(true);
             isMultiplechoice = true;
@@ -63,7 +64,10 @@ public class SimpleNPCDialogueSignal : MonoBehaviour
           //  SetBarOff();
         }
         else
+        {
             isMultiplechoice = false;
+            Events.ChangeCursor(CursorUI.types.READ, fieldColor);
+        }
 
         settings = Data.Instance.settings.runSignalSettings;
         npcFace.SetActive(false);

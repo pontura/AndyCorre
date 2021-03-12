@@ -49,6 +49,8 @@ public class RunUIManager : MonoBehaviour
     }
     void RunningState(bool isOn)
     {
+        if (Game.Instance.state == Game.states.READY)
+            return;
         if (isOn)
             InitRunning();
         else
@@ -69,12 +71,16 @@ public class RunUIManager : MonoBehaviour
     }
     void InitRunning()
     {
+        if (Game.Instance.state == Game.states.READY)
+            return;
         anim.Play("stepRythmBarOn");
         rythm = initialRythm;
         state = states.RUNNING;
     }
     public void OnKeyPressed(string key)
     {
+        if (Game.Instance.state == Game.states.READY)
+            return;
         if (state == states.STOPPED)
             return;
 

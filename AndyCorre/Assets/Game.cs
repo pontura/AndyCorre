@@ -74,14 +74,11 @@ public class Game : MonoBehaviour
     }
     private void Update()
     {
-        if (state == states.READY)
-            return;
-
         distance = character.transform.position.z;
         parkManager.OnUpdate(distance);
         if (state == states.RUNNING_SIGNALS)
             runSignalsManager.OnUpdate(distance);
-        else if (state == states.AVATAR_TALK)
+        else if (state == states.AVATAR_TALK || state == states.READY)
         {
             avatarRunningMoment.OnUpdate(distance);
             if (darkValue > 0)

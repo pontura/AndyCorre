@@ -341,7 +341,7 @@ public class RunSignalsManager : MonoBehaviour
 
         signalID = content.goto_id;
 
-        if(content.score>0)  Game.Instance.AddScore(content.score);
+        Game.Instance.AddScore(content.score);
 
         AddSignal();
     }

@@ -24,11 +24,17 @@ public class AvatarRunningMoment : MonoBehaviour
 
     public void OnUpdate(float distance)
     {
+        if (Game.Instance.state == Game.states.READY)
+        {
+            Vector3 pos = npc.transform.localPosition;
+            pos.z += Time.deltaTime * 4;
+            npc.transform.localPosition = pos;
+            return;
+        }
         if (npc.state == NpcRunner.states.EXIT)
         {
             Events.RunningState(false);
             Events.ChangeGameState(Game.states.READY);
-            npc.transform.position = new Vector3(_x, 0, npc.transform.position.z+Time.deltaTime * 4);
             return;
         }
         npc.animationController.SetSpeed(speed);

@@ -129,14 +129,21 @@ public class Settings : MonoBehaviour
     public int GetNextDisparadorIDNPC(int disparador_id) // busca si el proximo disparador es del estado en el que jugaste antes "STATE_1"..
     {
         disparador_id++;
-        if (disparador_id > allDataNpc.all.Count)
+        if (disparador_id > allDataNpc.all.Count-1)
+        {
+            print("]]]]]]]]]]]]]]]]] -1");
             return -1;
+        }
+           
 
         int stateToshow = Game.Instance.GetStateByScore();
         SignalData sd = allDataNpc.all[disparador_id];
         string[] s = sd.text.Split("_"[0]);
         if (s.Length < 2 || int.Parse(s[1]) == stateToshow)
+        {
+            print("___________estado " + sd.text + " stateToshow: " + stateToshow);
             return disparador_id;
+        }           
         else
             return GetNextDisparadorIDNPC(disparador_id);
     }

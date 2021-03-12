@@ -979,7 +979,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 0
   character: {fileID: 1159911324}
-  state: 2
+  time_to_get_dark: 0
+  speed_to_lights: 0
+  score: 0
+  state: 1
+  darkValue: 0
+  totalScores: 0
 --- !u!114 &547028190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1638,7 +1643,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c84bbe5ace9304abcfcb9f7c809a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateToshow: 1
   animationController: {fileID: 146436843}
   simpleNPCDialogueSignal: {fileID: 8084615707888107949}
   state: 0
@@ -2614,10 +2618,13 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice:
     - goto_id: 101
+      score: 0
       text: "A la yegua gris le oy\xF3 murmurar..."
     - goto_id: 201
+      score: 0
       text: "El perrito no pod\xEDa creer..."
     - goto_id: 301
+      score: 0
       text: "Lo que el buitre pregunt\xF3 fue..."
     content: []
   - done: 0
@@ -2680,10 +2687,13 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice:
     - goto_id: 1101
+      score: 0
       text: Es demasiado pronto para ver gente.
     - goto_id: 1201
+      score: 0
       text: "Deber\xEDa intentarlo. "
     - goto_id: 1301
+      score: 0
       text: No estoy segura de que sea buena idea.
     content: []
   - done: 0
@@ -2831,10 +2841,13 @@ MonoBehaviour:
     pos_x: 0
     multiplechoice:
     - goto_id: 2101
+      score: 0
       text: Hay un momento para hacer las cosas...
     - goto_id: 2201
+      score: 0
       text: Hizo chistes hasta el final...
     - goto_id: 2103
+      score: 0
       text: "Sigo despert\xE1ndome a la noche..."
     content: []
   - done: 0
@@ -4373,6 +4386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   simple: {fileID: 21300000, guid: 258dbe22ed9e7f54db9ade42749ec1bf, type: 3}
   read: {fileID: 21300000, guid: 15ae3aff75e08564facfe15b7b596358, type: 3}
+  click: {fileID: 21300000, guid: c8e5922ab4d06794d82c0079e5a097f5, type: 3}
   image: {fileID: 1261991064}
 --- !u!1 &1928526854
 GameObject:

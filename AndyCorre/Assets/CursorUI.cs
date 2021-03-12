@@ -7,12 +7,14 @@ public class CursorUI : MonoBehaviour
 {
     public Sprite simple;
     public Sprite read;
+    public Sprite click;
     public Image image;
 
     public enum types
     {
         SIMPLE,
-        READ
+        READ,
+        CLICK
     }
     void Start()
     {
@@ -42,6 +44,9 @@ public class CursorUI : MonoBehaviour
                 break;
             case types.SIMPLE:
                 image.sprite = simple;
+                break;
+            case types.CLICK:
+                image.sprite = click;
                 break;
         }
     }
