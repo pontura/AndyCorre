@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class NpcRunner : MonoBehaviour
 {
-
-    public int stateToshow = 1; // viene de como te fue en la experiencia anterior 1,2 o 3:
-
+    
     public CharacterAnimationController animationController;
 
     public SimpleNPCDialogueSignal simpleNPCDialogueSignal;
@@ -92,7 +90,7 @@ public class NpcRunner : MonoBehaviour
     {
         Debug.Log("_________NextDisparador: " + disparadorID);
         signalID = 0;
-        disparadorID = Data.Instance.settings.GetNextDisparadorIDNPC(disparadorID, stateToshow);
+        disparadorID = Data.Instance.settings.GetNextDisparadorIDNPC(disparadorID);
         Debug.Log("Nuevo disparador: " + disparadorID);
 
         if (disparadorID == -1 || disparadorID >= Data.Instance.settings.allDataNpc.all.Count)

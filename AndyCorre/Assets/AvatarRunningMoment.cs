@@ -10,12 +10,16 @@ public class AvatarRunningMoment : MonoBehaviour
     float distanceToRun = 4;
     float _x = 0;
     float max_x = -2;
-
+    private void Awake()
+    {
+        npc.gameObject.SetActive(false);
+    }
     public void Init()
     {
         Vector3 pos = Game.Instance.Character.transform.position;
         pos.z += 45;
         npc.transform.position = pos;
+        npc.gameObject.SetActive(true);
     }
 
     public void OnUpdate(float distance)
@@ -50,6 +54,7 @@ public class AvatarRunningMoment : MonoBehaviour
     }
     void InitRun()
     {
+        npc.animationController.InitRunning();
         Invoke("NpcStartTalking", 2);
         npc.Run();
     }

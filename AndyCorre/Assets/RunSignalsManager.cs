@@ -31,8 +31,6 @@ public class RunSignalsManager : MonoBehaviour
     float nextDistance;
     float distance;
     float timeInRama;
-    float time_to_get_dark;
-    float speed_to_lights;
 
     private void Awake()
     {
@@ -49,8 +47,6 @@ public class RunSignalsManager : MonoBehaviour
     }
     public void Init()
     {
-        time_to_get_dark = Data.Instance.settings.time_to_get_dark;
-        speed_to_lights = Data.Instance.settings.speed_to_lights;
         camTransform = Game.Instance.Character.cam.transform;
         viewDistance = Data.Instance.settings.viewDistance;
         nextDistance = viewDistance;
@@ -70,14 +66,7 @@ public class RunSignalsManager : MonoBehaviour
         }
         return null;
     }
-    void SetDarkness()
-    {
-        if (darkValue > 1)
-            darkValue = 1;
-        else if (darkValue < 0)
-            darkValue = 0;
-        Game.Instance.SetLightsValue(1-darkValue);
-    }
+    
     void OutOfSight()
     {
         if (state == states.WAITING)
@@ -150,13 +139,13 @@ public class RunSignalsManager : MonoBehaviour
 
         if(state != states.NONE)
         {
-            timeInRama += Time.deltaTime / time_to_get_dark;
+            timeInRama += Time.deltaTime / Game.Instance.time_to_get_dark;
             darkValue = timeInRama;                
         } else
         {
-            darkValue -= Time.deltaTime * speed_to_lights;
+            darkValue -= Time.deltaTime * Game.Instance.speed_to_lights;
         }
-        SetDarkness();
+        Game.Instance.SetDarknessValue(darkValue);
 
         if (actualSignal == null)
             return;
@@ -351,6 +340,9 @@ public class RunSignalsManager : MonoBehaviour
             all_to_remove[0].SetAnimOff();
 
         signalID = content.goto_id;
+
+        if(content.score>0)  Game.Instance.AddScore(content.score);
+
         AddSignal();
     }
 }

@@ -16,16 +16,19 @@
                "multiplechoice":[
                   {
                      "text":"A la yegua gris le oyó murmurar...",
-                     "goto_id":10
+                     "goto_id":10,
+					 "score": 0
 
                   },
                   {
                      "text":"El perrito no podía creer...",
-                     "goto_id":20
+                     "goto_id":20,
+					 "score": 50
                   },
                   {
                      "text":"Lo que el buitre preguntó fue...",
-                     "goto_id":30
+                     "goto_id":30,
+					 "score": -50
                   }
                ]
             },
@@ -58,15 +61,18 @@
                "multiplechoice":[
                   {
                      "text":"Es demasiado pronto para ver gente.",
-                     "goto_id":10
+                     "goto_id":10,
+					 "score": -50
                   },
                   {
                      "text":"Debería intentarlo.",
-                     "goto_id":20
+                     "goto_id":20,
+					 "score": 50
                   },
                   {
                      "text":"No estoy segura de que sea buena idea.",
-                     "goto_id":30
+                     "goto_id":30,
+					 "score": 0
                   }
                ]
             },
@@ -98,15 +104,18 @@
                "multiplechoice":[
                   {
                      "text":"Hay un momento para hacer las cosas...",
-                     "goto_id":10
+                     "goto_id":10,
+					 "score": 0
                   },
                   {
                      "text":"Hizo chistes hasta el final...",
-                     "goto_id":20
+                     "goto_id":20,
+					 "score": 50
                   },
                   {
                      "text":"Sigo despertándome a la noche...",
-                     "goto_id":30
+                     "goto_id":30,
+					 "score": -50
                   }
                ]
             },
@@ -145,15 +154,18 @@
                "multiplechoice":[
                   {
                      "text":"Yo nunca le dí importancia.",
-                     "goto_id":10
+                     "goto_id":10,
+					 "score": 0
                   },
                   {
                      "text":"Me hacía muy bien",
-                     "goto_id":20
+                     "goto_id":20,
+					 "score": 50
                   },
                   {
                      "text":"Yo fingía que le creía.",
-                     "goto_id":30
+                     "goto_id":30,
+					 "score": -50
                   }
                ]
             },

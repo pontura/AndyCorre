@@ -73,6 +73,7 @@ public class Settings : MonoBehaviour
     public class SignalDataMultipleContent
     {
         public int goto_id;
+        public int score;
         public string text;
     }
     private void Start()
@@ -125,18 +126,19 @@ public class Settings : MonoBehaviour
                 all.Add(sd);
         return all;
     }
-    public int GetNextDisparadorIDNPC(int disparador_id, int stateToshow) // busca si el proximo disparador es del estado en el que jugaste antes "STATE_1"..
+    public int GetNextDisparadorIDNPC(int disparador_id) // busca si el proximo disparador es del estado en el que jugaste antes "STATE_1"..
     {
+        disparador_id++;
         if (disparador_id > allDataNpc.all.Count)
             return -1;
 
-        disparador_id++;
+        int stateToshow = Game.Instance.GetStateByScore();
         SignalData sd = allDataNpc.all[disparador_id];
         string[] s = sd.text.Split("_"[0]);
         if (s.Length < 2 || int.Parse(s[1]) == stateToshow)
             return disparador_id;
         else
-            return GetNextDisparadorIDNPC(disparador_id, stateToshow);
+            return GetNextDisparadorIDNPC(disparador_id);
     }
     public List<SignalData> GetSignalsByDisparadorNpc(int disparador_id)
     {

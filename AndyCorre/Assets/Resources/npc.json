@@ -74,32 +74,35 @@
                "multiplechoice":[
                   {
                      "text":"Todas hemos tenido malos hábitos.",
-                     "goto_id":100
+                     "goto_id":100,
+					 "score": 50
                   },
                   {
                      "text":"No te imagino fumando.",
-                     "goto_id":200
+                     "goto_id":200,
+					 "score": 0
                   },
                   {
                      "text":"Mi mamá fumó toda la vida.",
-                     "goto_id":300
+                     "goto_id":300,
+					 "score": -50
                   }
                ]
             },
             {
                "text":"El hábito es tener malos hábitos, en mi caso.",
                "id":100,
-               "character":"165"
+               "character":"npc"
             },
             {
                "text":"Claro. Nunca pude fumar en público. Solo a oscuras..",
                "id":200,
-               "character":"177"
+               "character":"npc"
             },
             {
                "text":"La mía también.",
                "id":300,
-               "character":"189"
+               "character":"npc"
             }
          ]
       },
@@ -129,15 +132,18 @@
                "multiplechoice":[
                   {
                      "text":"Yo también soy muy antisocial.",
-                     "goto_id":100
+                     "goto_id":100,
+					 "score": -50
                   },
                   {
                      "text":"Me encantaría irme de vacaciones.",
-                     "goto_id":200
+                     "goto_id":200,
+					 "score": 50
                   },
                   {
                      "text":"Por ahora mis vacaciones son correr por acá. Podría ser peor.",
-                     "goto_id":300
+                     "goto_id":300,
+					 "score": 0
                   }
                ]
             },
@@ -155,6 +161,63 @@
                "text":"El sábado hay una fiesta de música electrónica. No sé si será muy divertida...",
                "id":300,
                "character":"npc"
+            }
+         ]
+      },
+	  {
+         "distance":25,
+         "text":"2",
+         "sprite_url":"",
+         "pos_x":2,
+         "content":[
+            {
+               "multiplechoice":[
+                  {
+                     "text":"Solo escucho música electrónica para dormir.",
+                     "goto_id":100,
+					 "score": 0
+                  },
+                  {
+                     "text":"Cansa menos bailar que correr. Esa es la parte buena.",
+                     "goto_id":200,
+					 "score": 50
+                  },
+                  {
+                     "text":"Hace muchísimo que no voy a una fiesta.",
+                     "goto_id":300,
+					 "score": -50
+                  }
+               ]
+            },
+            {
+               "text":"Ah, pero conmigo no te daría sueño, ¡eso te lo aseguro!",
+               "id":100,
+               "character":"npc"
+            },
+			{
+               "text":"Sos graciosa, ¿eh?",
+               "id":101,
+               "character":"andy"
+            },
+            {
+               "text":"Eso es porque no me viste bailar a mí.",
+               "id":200,
+               "character":"npc"
+            },
+			{
+               "text":"Esto promete...",
+               "id":201,
+               "character":"andy"
+            },
+            {
+               "text":"¿Es porque hay mucha gente?",
+               "id":300,
+               "character":"npc"
+            },
+			{
+               "text":"Digamos que no tengo muchas ganas de festejar en este momento.",
+               "id":301,
+               "character":"andy"
             }
          ]
       },
