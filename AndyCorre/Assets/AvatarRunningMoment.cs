@@ -7,7 +7,9 @@ public class AvatarRunningMoment : MonoBehaviour
     public NpcRunner npc;
     public float speed;
     public float speedMax = 10;
+    float distanceToRunInit = 10;
     float distanceToRun = 4;
+    float distance;
     float _x = 0;
     float max_x = -2;
     private void Awake()
@@ -22,7 +24,7 @@ public class AvatarRunningMoment : MonoBehaviour
         npc.gameObject.SetActive(true);
     }
 
-    public void OnUpdate(float distance)
+    public void OnUpdate(float _distance)
     {
         if (Game.Instance.state == Game.states.READY)
         {
@@ -33,15 +35,15 @@ public class AvatarRunningMoment : MonoBehaviour
         }
         if (npc.state == NpcRunner.states.EXIT)
         {
-            Events.RunningState(false);
             Events.ChangeGameState(Game.states.READY);
+            Events.RunningState(false);
             return;
         }
         npc.animationController.SetSpeed(speed);
         if (npc.state == NpcRunner.states.IDLE)
         {
             npc.animationController.SetSpeed(speed);
-            if (npc.transform.position.z < distance + distanceToRun)
+            if (npc.transform.position.z < _distance + distanceToRunInit)
                 InitRun();
             if (speed > 0)
                 speed -= Time.deltaTime;
@@ -52,14 +54,20 @@ public class AvatarRunningMoment : MonoBehaviour
                 speed += Time.deltaTime;
             if (_x > max_x)
                 _x -= Time.deltaTime/2;
-            
-            npc.transform.position = Vector3.Lerp(npc.transform.position, new Vector3(_x, 0, distance + distanceToRun), Time.deltaTime*4);
+           
+            if (distance < distanceToRun)
+                distance = distanceToRun;
+            else
+                distance -= Time.deltaTime;
+
+            npc.transform.position = Vector3.Lerp(npc.transform.position, new Vector3(_x, 0, _distance + distance), Time.deltaTime*4);
         }
         if (npc.ActualSignal != null)
             npc.simpleNPCDialogueSignal.OnUpdate();
     }
     void InitRun()
     {
+        distance = distanceToRunInit;
         npc.animationController.InitRunning();
         Invoke("NpcStartTalking", 2);
         npc.Run();

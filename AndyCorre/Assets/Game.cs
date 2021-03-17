@@ -14,6 +14,7 @@ public class Game : MonoBehaviour
     public float time_to_get_dark;
     public float speed_to_lights;
     public float score;
+    public UIManager uiManager;
 
 
     public states state;
@@ -63,8 +64,17 @@ public class Game : MonoBehaviour
         state = newState;
         switch(state)
         {
+            case states.INTRO:
+                uiManager.intro.Init();
+                break;
+            case states.RUNNING_SIGNALS:
+                uiManager.runUIManager.Init();
+                break;
             case states.AVATAR_TALK:
                 avatarRunningMoment.Init();
+                break;
+            case states.READY:
+                uiManager.EndProto();
                 break;
         }
     }

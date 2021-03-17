@@ -32,7 +32,7 @@ public class CursorUI : MonoBehaviour
     types lastType;
     void ChangeCursor(types type, Color color)
     {
-        print("ChangeCursor" + type);
+
         color.a = 0.75f;
         image.color = color;
         if (type == lastType)

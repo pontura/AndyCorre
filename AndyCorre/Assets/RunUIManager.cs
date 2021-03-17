@@ -34,8 +34,9 @@ public class RunUIManager : MonoBehaviour
         STOPPED
     }
 
-    void Start()
+    public void Init()
     {
+        gameObject.SetActive(false);
         field.text = "";
         character = Game.Instance.Character;
         anim = GetComponent<Animation>();
@@ -141,7 +142,8 @@ public class RunUIManager : MonoBehaviour
     float rot_z;
     void Update()
     {
-     
+        if (Game.Instance.state == Game.states.INTRO)
+            return;
 
         myDesaceleration += desaceleration;
         myRythm -= myDesaceleration * Time.deltaTime;

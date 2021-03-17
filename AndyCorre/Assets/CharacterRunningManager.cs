@@ -38,7 +38,7 @@ public class CharacterRunningManager : MonoBehaviour
         {
             state = states.RUN;
         }
-        else
+        else if(Game.Instance.state != Game.states.READY)
         {
             aberrationValue = 2;
             state = states.STOPPED;

@@ -5,9 +5,13 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public RunUIManager runUIManager;
+    public GameObject endProtoPanel;
+    public Intro intro;
 
     void Start()
     {
+        runUIManager.gameObject.SetActive(false);
+        endProtoPanel.SetActive(false);
         Events.OnKeyPressed += OnKeyPressed;
     }
 
@@ -19,5 +23,9 @@ public class UIManager : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+    }
+    public void EndProto()
+    {
+        endProtoPanel.SetActive(true);
     }
 }

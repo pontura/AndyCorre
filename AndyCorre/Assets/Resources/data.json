@@ -1,7 +1,7 @@
 {
    "all":[
       {
-         "distance":25,
+         "distance":40,
          "text":"Ese caballo quiere decirme algo",
          "sprite_url":"",
          "pos_x":2,
@@ -47,7 +47,7 @@
          ]
       },
 	    {
-         "distance":25,
+         "distance":40,
          "text":"¿Volver a trabajar?",
          "sprite_url":"",
          "pos_x":-2,
@@ -91,7 +91,7 @@
          ]
       },
 	  {
-         "distance":25,
+         "distance":40,
          "text":"¿Todavía despierta?",
          "sprite_url":"",
          "pos_x":2,
@@ -140,7 +140,7 @@
          ]
       },
 	  {
-         "distance":25,
+         "distance":40,
          "text":"Un árbol de peras.",
          "sprite_url":"",
          "pos_x":-2,
