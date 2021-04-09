@@ -31,14 +31,9 @@ public class Data : MonoBehaviour
             return mInstance;
         }
     }
-    public void LoadLevel(string aLevelName, bool showMap)
+    public void LoadLevel(string aLevelName)
     {
-        this.newScene = aLevelName;
-        Invoke("LoadDelayed", 0.75f);       
-    }
-    void LoadDelayed()
-    {
-         SceneManager.LoadScene(newScene);
+         SceneManager.LoadScene(aLevelName);
     }
     void Awake()
     {
@@ -51,7 +46,6 @@ public class Data : MonoBehaviour
             return;
         }
         settings = GetComponent<Settings>();
-        DontDestroyOnLoad(this);
     }
     private void Start()
     {

@@ -12,8 +12,6 @@ public class RunMultiplechoiceButton : MonoBehaviour
     public Image bg;
     float value;
     float speed = 1.2f;
-    bool isOver;
-    bool isOff;
     bool isDone;
     Color bgColor;
     Color fieldColor;
@@ -25,7 +23,7 @@ public class RunMultiplechoiceButton : MonoBehaviour
     public void InitNpc(SimpleNPCDialogueSignal npcSignal, Settings.SignalDataMultipleContent content, Color fieldColor)
     {
         Color barColor = fieldColor;
-        barColor.a = 0.2f;
+        barColor.a = 0.3f;
         bar.color = barColor;
 
         bgColor = bg.color;
@@ -40,7 +38,11 @@ public class RunMultiplechoiceButton : MonoBehaviour
         transform.localScale = Vector3.one;
 
         value = initialValue;
-        SetBar();
+
+        alphaValue = 1;
+        bgColor.a = 1;
+        bg.color = bgColor;
+        field.color = Color.white;
     }
     public void Init(RunSignal runSignal, Settings.SignalDataMultipleContent content, Color fieldColor)
     {
@@ -60,86 +62,16 @@ public class RunMultiplechoiceButton : MonoBehaviour
         transform.localScale = Vector3.one;
 
         value = initialValue;
-        SetBar();
-    }
-    public void RollOut()
-    {
-        isOff = false;
+
         alphaValue = 1;
         bgColor.a = 1;
         bg.color = bgColor;
         field.color = Color.white;
     }
-    public void SetOff()
-    {
-        isOff = true;
-    }
-    void UpdateAlpha()
-    {
-        if (isOff)
-        {
-            alphaValue -= speed * Time.deltaTime;
-        }
-        else
-            alphaValue += Time.deltaTime;
-        if (alphaValue < 0)
-            alphaValue = 0;
-        else if (alphaValue > 1)
-            alphaValue = 1;
-
-        bgColor.a = alphaValue;
-        fieldColor.a = alphaValue;
-
-        bg.color = bgColor;
-        field.color = fieldColor;
-    }
-    private void Update()
+    public void Clicked()
     {
         if (isDone)
             return;
-
-        UpdateAlpha();
-
-        if (isOver)
-        {            
-            value += speed * Time.deltaTime;
-            if (value > 1)
-            {
-                value = 1;
-                Clicked();
-            }
-            SetBar();
-        }
-    }
-    void SetBar()
-    {
-        bar.fillAmount = value;
-    }
-    public void PointerEnter()
-    {
-        if(npcSignal != null)
-            npcSignal.OnOverMultiplechoice(this);
-        else
-            runSignal.OnOverMultiplechoice(this);
-        alphaValue = 1;
-        isOff = false;
-        isOver = true;
-        value = initialValue;
-        SetBar();
-    }
-    public void Pointerxit()
-    {
-        isOff = false;
-        if (npcSignal != null)
-            npcSignal.OnOverMultiplechoice(null);
-        else
-            runSignal.OnOverMultiplechoice(null);
-        isOver = false;
-        value = initialValue;
-        SetBar();
-    }
-    public void Clicked()
-    {
         isDone = true;
         if (npcSignal != null)
             npcSignal.Clicked(content);

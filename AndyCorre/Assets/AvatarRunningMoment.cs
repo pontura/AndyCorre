@@ -18,12 +18,19 @@ public class AvatarRunningMoment : MonoBehaviour
     }
     public void Init()
     {
+        npc.gameObject.transform.localEulerAngles = new Vector3(0, 172, 0);
+        Invoke("DelayedMusic", 3.5f);
+
         Vector3 pos = Game.Instance.Character.transform.position;
         pos.z += 45;
         npc.transform.position = pos;
         npc.gameObject.SetActive(true);
     }
-
+    void DelayedMusic()
+    {
+        Events.PlaySound("music", "bego", false);
+        Events.FadeVolumeFromTo("music",0, 1, 0.5f);
+    }
     public void OnUpdate(float _distance)
     {
         if (Game.Instance.state == Game.states.READY)
@@ -39,22 +46,31 @@ public class AvatarRunningMoment : MonoBehaviour
             Events.RunningState(false);
             return;
         }
-        npc.animationController.SetSpeed(speed);
         if (npc.state == NpcRunner.states.IDLE)
         {
-            npc.animationController.SetSpeed(speed);
+            npc.animationController.SetSpeed(0);
             if (npc.transform.position.z < _distance + distanceToRunInit)
                 InitRun();
-            if (speed > 0)
-                speed -= Time.deltaTime;
+            //if (speed > 0)
+            //    speed -= Time.deltaTime;
         }
         else
         {
-            if (speed < speedMax)
-                speed += Time.deltaTime;
+            Vector3 rot = npc.gameObject.transform.localEulerAngles;
+            rot.y = Mathf.Lerp(rot.y, 0, 0.05f);
+            npc.gameObject.transform.localEulerAngles = rot;
+
+
             if (_x > max_x)
                 _x -= Time.deltaTime/2;
-           
+
+                if (speed < speedMax)
+                    speed += Time.deltaTime;
+            print("Game.Instance.Character.speed " + Game.Instance.Character.speed);
+
+            npc.animationController.SetSpeed(Game.Instance.Character.speed);
+
+
             if (distance < distanceToRun)
                 distance = distanceToRun;
             else

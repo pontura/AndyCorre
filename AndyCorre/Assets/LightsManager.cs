@@ -6,6 +6,7 @@ public class LightsManager : MonoBehaviour
 {
     public Light light;
     public float maxLight = 2;
+    public float minLightValue = 0.3f;
     public float speed = 2;
     float lightValue;
 
@@ -19,6 +20,8 @@ public class LightsManager : MonoBehaviour
     }
     private void Update()
     {
+        if (lightValue < minLightValue)
+            lightValue = minLightValue;
         light.intensity = Mathf.Lerp(light.intensity, lightValue, speed * Time.deltaTime);
     }
 }

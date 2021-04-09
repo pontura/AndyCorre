@@ -10,7 +10,66 @@
                "text":"¡Hola! Me estaba preguntando si hoy vendrías.",
                "character":"npc"
             },
-            
+            {
+               "text":"¿Qué tal? Bego era tu nombre, ¿no? Yo también dudé en venir.",
+               "character":"andy"
+            },
+            {
+               "text":"Me daba miedo que me vuelva a pasar.",
+               "character":"andy"
+            },
+            {
+               "text":"Tuviste suerte de que estaba por ahí cerca. A esta hora no corre mucha gente.",
+               "character":"npc"
+            },
+            {
+               "text":"Si. Me gusta esa sensación de soledad. Me ayuda a pensar.",
+               "character":"andy"
+            },
+            {
+               "text":"Ah bueno, ¡si preferís te dejo sola!",
+               "character":"npc"
+            },
+            {
+               "text":"No. Al revés. Ya pensé suficiente por hoy.",
+               "character":"andy"
+            },
+            {
+               "text":"Gracias por lo del otro día. Estaba deshidratada.",
+               "character":"andy"
+            },
+            {
+               "text":"¿Llegaste bien a tu casa? ¡No te acordabas ni donde vivías!",
+               "character":"npc"
+            },
+            {
+               "text":"Sí. Creo que corrí demasiado.",
+               "character":"andy"
+            },
+            {
+               "text":"¡Y demasiado rápido! Cuando te ví pensé que te estabas escapando.",
+               "character":"npc"
+            },
+            {
+               "text":"Es que era la primera vez. No sé hacerlo bien. Solamente corro.",
+               "character":"andy"
+            },
+            {
+               "text":"Lo que me gusta de correr es saber que cuando termine voy a sentarme a fumar un pucho.",
+               "character":"npc"
+            },
+            {
+               "text":"Mis primeros cigarrillos los fumé acá mismo.",
+               "character":"npc"
+            },
+            {
+               "text":"Venía a la noche, de pendeja. Desde entonces es un ritual.",
+               "character":"npc"
+            },
+            {
+               "text":"Acá tomé las primeras birras, también. Los primeros porros. El parque de los vicios, jaja.",
+               "character":"npc"
+            },
             {
                "multiplechoice":[
                   {
@@ -38,6 +97,210 @@
             {
                "text":"Claro. Nunca pude fumar en público. Solo a oscuras..",
                "id":200,
+               "character":"npc"
+            },
+            {
+               "text":"La mía también.",
+               "id":300,
+               "character":"npc"
+            }
+         ]
+      },
+      {
+         "distance":25,
+         "text":"2",
+         "sprite_url":"",
+         "pos_x":2,
+         "content":[
+            {
+               "text":"...¿Entonces vivís por acá desde que eras chica?",
+               "character":"andy"
+            },
+            {
+               "text":"Sí. Después viví con una novia unos años en otra parte, y con amigos en otra, y así.",
+               "character":"npc"
+            },
+            {
+               "text":"Ahora vine porque mis viejos se fueron de vacaciones.",
+               "character":"npc"
+            },
+            {
+               "text":"Y su perro es muy antisocial. Solo se deja alimentar por mí.",
+               "character":"npc"
+            },
+            {
+               "multiplechoice":[
+                  {
+                     "text":"Yo también soy muy antisocial.",
+                     "goto_id":100,
+					 "score": -50
+                  },
+                  {
+                     "text":"Me encantaría irme de vacaciones.",
+                     "goto_id":200,
+					 "score": 50
+                  },
+                  {
+                     "text":"Por ahora mis vacaciones son correr por acá. Podría ser peor.",
+                     "goto_id":300,
+					 "score": 0
+                  }
+               ]
+            },
+            {
+               "text":"El sábado hay una fiesta de música electrónica. No sé si será muy divertida...",
+               "id":100,
+               "character":"npc"
+            },
+            {
+               "text":"El sábado hay una fiesta de música electrónica. No sé si será muy divertida...",
+               "id":200,
+               "character":"npc"
+            },
+            {
+               "text":"El sábado hay una fiesta de música electrónica. No sé si será muy divertida...",
+               "id":300,
+               "character":"npc"
+            }
+         ]
+      },
+	  {
+         "distance":25,
+         "text":"2",
+         "sprite_url":"",
+         "pos_x":2,
+         "content":[
+            {
+               "multiplechoice":[
+                  {
+                     "text":"Solo escucho música electrónica para dormir.",
+                     "goto_id":100,
+					 "score": 0
+                  },
+                  {
+                     "text":"Cansa menos bailar que correr. Esa es la parte buena.",
+                     "goto_id":200,
+					 "score": 50
+                  },
+                  {
+                     "text":"Hace muchísimo que no voy a una fiesta.",
+                     "goto_id":300,
+					 "score": -50
+                  }
+               ]
+            },
+            {
+               "text":"Ah, pero conmigo no te daría sueño, ¡eso te lo aseguro!",
+               "id":100,
+               "character":"npc"
+            },
+			{
+               "text":"Sos graciosa, ¿eh?",
+               "id":101,
+               "character":"andy"
+            },
+            {
+               "text":"Eso es porque no me viste bailar a mí.",
+               "id":200,
+               "character":"npc"
+            },
+			{
+               "text":"Esto promete...",
+               "id":201,
+               "character":"andy"
+            },
+            {
+               "text":"¿Es porque hay mucha gente?",
+               "id":300,
+               "character":"npc"
+            },
+			{
+               "text":"Digamos que no tengo muchas ganas de festejar en este momento.",
+               "id":301,
+               "character":"andy"
+            }
+         ]
+      },
+      {
+         "distance":25,
+         "text":"STATE_1",
+         "sprite_url":"",
+         "pos_x":2,
+         "content":[
+            {
+               "text":"¿Qué dirías si te digo de ir juntas?",
+               "character":"npc"
+            },
+            {
+               "text":"Claro, vamos. Puede estar bueno. Lo voy a tomar como algo deportivo. ",
+               "character":"andy"
+            },
+            {
+               "text":"Bueno pero dejame a mí manejar la hidratación, que ya vimos cómo te pusiste el otro día.",
+               "character":"npc"
+            }
+         ]
+      },
+      {
+         "distance":25,
+         "text":"STATE_2",
+         "sprite_url":"",
+         "pos_x":2,
+         "content":[
+            {
+               "text":"¿Qué dirías si te digo de ir juntas?",
+               "character":"npc"
+            },
+            {
+               "text":"Diría que es una linda invitación. Pero que no te ilusiones. No sé si puedo. ",
+               "character":"andy"
+            },
+            {
+               "text":"Querer es poder. Lo leí en una remera. ",
+               "character":"npc"
+            }
+         ]
+      },
+      {
+         "distance":25,
+         "text":"STATE_3",
+         "sprite_url":"",
+         "pos_x":2,
+         "content":[
+            {
+               "text":"¿Qué dirías si te digo de ir juntas?",
+               "character":"npc"
+            },
+            {
+               "text":"Gracias, Bego, pero es complicado.",
+               "character":"andy"
+            },
+            {
+               "text":"Estos últimos meses fueron muy cansadores para mí. ",
+               "character":"andy"
+            },
+            {
+               "text":"Ya te contaré por qué en algún momento.",
+               "character":"andy"
+            }
+         ]
+      },
+      {
+         "distance":25,
+         "text":"2",
+         "sprite_url":"",
+         "pos_x":2,
+         "content":[
+            {
+               "text":"Esta parte me gusta correrla rápido. Hablemos pronto.",
+               "character":"npc"
+            },
+            {
+               "text":"¡Te veo mañana a la misma hora para correr!",
+               "character":"npc"
+            },
+            {
+               "text":"¡Que estés bien!",
                "character":"npc"
             }
          ]

@@ -78,8 +78,20 @@ public class Settings : MonoBehaviour
     }
     private void Start()
     {
+        Events.ResetApp += ResetApp;
         SetIDS();
         Load();
+    }
+    private void OnDestroy()
+    {
+        Events.ResetApp -= ResetApp;
+    }
+    void ResetApp()
+    {
+        foreach (SignalData d in all.all)
+            d.done = false;
+
+        Game.Instance.Init();
     }
     public void SetIDS()
     {
@@ -131,7 +143,6 @@ public class Settings : MonoBehaviour
         disparador_id++;
         if (disparador_id > allDataNpc.all.Count-1)
         {
-            print("]]]]]]]]]]]]]]]]] -1");
             return -1;
         }
            
@@ -259,37 +270,56 @@ public class Settings : MonoBehaviour
         }
     }
 
+    public void SetInDisparador(int disparadorID)
+    {
+        disparadorArrayPos = disparadorID+1;
 
+        //HACK para setear todos los disparadores done:
+        if (disparadorID > 1)
+            foreach (SignalData sd in disparatoresData)
+                sd.done = true;
+    }
     int disparadorArrayPos = 0;
     public SignalData GetNextDisparador()
     {
         int id = 0;
-        if (disparadorArrayPos >= disparatoresData.Count - 1)
-            disparadorArrayPos = 0;
+        //if (disparadorArrayPos >= disparatoresData.Count - 1)
+        //    disparadorArrayPos = 0;
+        print("GetNextDisparador " + disparadorArrayPos);
 
         foreach (SignalData sd in disparatoresData)
         {
             if (id == disparadorArrayPos && !sd.done)
             {
-                disparadorArrayPos++;
+                disparadorArrayPos++;               
                 return sd;
             }
-            else if (id > disparadorArrayPos)
-                disparadorArrayPos++;
+            //else if (id > disparadorArrayPos)
+            //    disparadorArrayPos++;
             id++;
         }
-        id = 0;
-        disparadorArrayPos = 0;
+        //id = 0;
+        //disparadorArrayPos = 0;
+        //foreach (SignalData sd in disparatoresData)
+        //{
+        //    if (!sd.done)
+        //    {
+        //        sd.distance += 10000;
+        //        disparadorArrayPos = id;
+        //        return sd;
+        //    }
+        //    id++;
+        //}
+        return null;
+    }
+    public bool AllDisparadoresDone()
+    {
         foreach (SignalData sd in disparatoresData)
         {
             if (!sd.done)
-            {
-                disparadorArrayPos = id;
-                return sd;
-            }
-            id++;
+                return false;
         }
-        return null;
+        return true;
     }
     public void SetDisparadorDone(int disparadorID)
     {

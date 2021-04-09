@@ -33,10 +33,14 @@ public class RunUIManager : MonoBehaviour
         RUNNING,
         STOPPED
     }
+    private void Awake()
+    {
+        gameObject.SetActive(false);
+    }
 
     public void Init()
     {
-        gameObject.SetActive(false);
+        print("InitRunningInitRunningInitRunning");
         field.text = "";
         character = Game.Instance.Character;
         anim = GetComponent<Animation>();
@@ -46,6 +50,7 @@ public class RunUIManager : MonoBehaviour
     }
     private void OnDestroy()
     {
+        print("OnDestroy");
         Events.RunningState -= RunningState;
     }
     void RunningState(bool isOn)
@@ -174,13 +179,13 @@ public class RunUIManager : MonoBehaviour
             if (character.speed >= 0.25f)
             {
                 if (!isRunning)
-                    Events.ChangeVolume("ui", 0.2f);
+                    Events.ChangeVolume("ui", 0.5f);
                 isRunning = true;
             }
             else if (isRunning)
             {
                 isRunning = false;
-                Events.ChangeVolume("ui", 0.12f);
+                Events.ChangeVolume("ui", 0.7f);
             }
         }
     }

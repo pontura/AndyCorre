@@ -93,22 +93,22 @@ public class SimpleNPCDialogueSignal : MonoBehaviour
         //barPos.y += 1000;
         //barAsset.transform.position = barPos;
   //  }
-    public void OnOverMultiplechoice(RunMultiplechoiceButton buttonOver)
-    {
-        if (state != states.ON)
-            return;
-        if (buttonOver == null)
-        {
-            foreach (RunMultiplechoiceButton m in multiplechoiceAll)
-                m.RollOut();
-        }
-        else
-        {
-            foreach (RunMultiplechoiceButton m in multiplechoiceAll)
-                if (m != buttonOver)
-                    m.SetOff();
-        }
-    }
+    //public void OnOverMultiplechoice(RunMultiplechoiceButton buttonOver)
+    //{
+    //    if (state != states.ON)
+    //        return;
+    //    if (buttonOver == null)
+    //    {
+    //        foreach (RunMultiplechoiceButton m in multiplechoiceAll)
+    //            m.RollOut();
+    //    }
+    //    else
+    //    {
+    //        foreach (RunMultiplechoiceButton m in multiplechoiceAll)
+    //            if (m != buttonOver)
+    //                m.SetOff();
+    //    }
+    //}
     float barTo;
     public void SetOn(int id, int total)
     {

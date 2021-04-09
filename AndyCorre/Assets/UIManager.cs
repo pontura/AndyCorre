@@ -11,13 +11,24 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         runUIManager.gameObject.SetActive(false);
-        endProtoPanel.SetActive(false);
-        Events.OnKeyPressed += OnKeyPressed;
+        endProtoPanel.SetActive(false);        
     }
-
+    public void RestartGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Replay");
+    }
     void OnKeyPressed(string key)
     {
         runUIManager.OnKeyPressed(key);
+    }
+    public void InitRunning()
+    {
+        runUIManager.gameObject.SetActive(true);
+        Events.OnKeyPressed += OnKeyPressed;
+    }
+    private void OnDestroy()
+    {
+        Events.OnKeyPressed -= OnKeyPressed;
     }
 
     public void Exit()

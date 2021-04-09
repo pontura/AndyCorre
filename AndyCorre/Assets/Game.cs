@@ -16,10 +16,14 @@ public class Game : MonoBehaviour
     public float score;
     public UIManager uiManager;
 
+    bool allLoaded;
+
+    public states initState;
 
     public states state;
     public enum states
     {
+        LOADING,
         INTRO,
         RUNNING_SIGNALS,
         AVATAR_TALK,
@@ -35,12 +39,13 @@ public class Game : MonoBehaviour
     }
     public CharacterRunningManager Character
     {
-        get  {  return character;  }
+        get { return character; }
     }
     void Awake()
     {
         if (!mInstance)
             mInstance = this;
+
         Events.ChangeGameState += ChangeGameState;
 
         parkManager = GetComponent<ParkManager>();
@@ -48,42 +53,45 @@ public class Game : MonoBehaviour
         lightsManager = GetComponent<LightsManager>();
         avatarRunningMoment = GetComponent<AvatarRunningMoment>();
     }
-    private void Start()
-    {
-        ChangeGameState(state);
-
-        time_to_get_dark = Data.Instance.settings.time_to_get_dark;
-        speed_to_lights = Data.Instance.settings.speed_to_lights;
-    }
     private void OnDestroy()
     {
         Events.ChangeGameState -= ChangeGameState;
     }
     void ChangeGameState(states newState)
     {
+        if (state != states.INTRO && state == newState)
+            return;
         state = newState;
-        switch(state)
+        switch (state)
         {
             case states.INTRO:
                 uiManager.intro.Init();
                 break;
             case states.RUNNING_SIGNALS:
+                uiManager.InitRunning();
+                runSignalsManager.Init();
                 uiManager.runUIManager.Init();
+                character.Init();
                 break;
             case states.AVATAR_TALK:
                 avatarRunningMoment.Init();
                 break;
             case states.READY:
+                print("end");
                 uiManager.EndProto();
                 break;
         }
     }
     public void Init()
-    {        
-        runSignalsManager.Init();
+    {
+        time_to_get_dark = Data.Instance.settings.time_to_get_dark;
+        speed_to_lights = Data.Instance.settings.speed_to_lights;
+        ChangeGameState(initState);
+        allLoaded = true;
     }
     private void Update()
     {
+        if (!allLoaded || state == states.INTRO) return;
         distance = character.transform.position.z;
         parkManager.OnUpdate(distance);
         if (state == states.RUNNING_SIGNALS)
@@ -94,7 +102,7 @@ public class Game : MonoBehaviour
             if (darkValue > 0)
             {
                 darkValue -= speed_to_lights * Time.deltaTime;
-            }            
+            }
         }
         SetDarkness();
     }

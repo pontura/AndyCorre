@@ -17,8 +17,8 @@ public class AudioManager : MonoBehaviour
     {
         Events.PlaySound += PlaySound;
         Events.ChangeVolume += ChangeVolume;
-        Events.FadeVolume += FadeVolume;       
-
+        Events.FadeVolume += FadeVolume;
+        Events.FadeVolumeFromTo += FadeVolumeFromTo;
         foreach (AudioSourceManager m in all)
         {
             m.audioSource = gameObject.AddComponent<AudioSource>();
@@ -31,6 +31,7 @@ public class AudioManager : MonoBehaviour
         Events.ChangeVolume -= ChangeVolume;
         Events.PlaySound -= PlaySound;
         Events.FadeVolume -= FadeVolume;
+        Events.FadeVolumeFromTo -= FadeVolumeFromTo;
     }
     void ChangeVolume(string sourceName, float volume)
     {
@@ -58,14 +59,21 @@ public class AudioManager : MonoBehaviour
                 return m.audioSource;
         return null;
     }
+    void FadeVolumeFromTo(string sourceName, float from, float to, float speed)
+    {
+        StopAllCoroutines();
+        AudioSource audioSource = GetAudioSource(sourceName);
+        StartCoroutine(FadeVolToCoroutine(audioSource, from, to, speed));
+    }
     void FadeVolume(string sourceName, float to, float speed)
     {
         StopAllCoroutines();
         AudioSource audioSource = GetAudioSource(sourceName);
-        StartCoroutine(FadeVolToCoroutine(audioSource, to, speed));
+        StartCoroutine(FadeVolToCoroutine(audioSource, audioSource.volume, to, speed));
     }
-    IEnumerator FadeVolToCoroutine(AudioSource audioSource, float to, float speed)
-    {        
+    IEnumerator FadeVolToCoroutine(AudioSource audioSource, float from, float to, float speed)
+    {
+        audioSource.volume = from;
         float vol = audioSource.volume;
         if (to > vol)
         {

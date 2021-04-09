@@ -15,21 +15,13 @@ public class InputManager : MonoBehaviour
         rotationFactor = Data.Instance.settings.rotationFactor;
     }
     void Update()
-    {
+    {      
         if (Input.GetKeyDown(KeyCode.Space))
-        {
             Events.OnKeyPressed("space");
-        }
-        else if (Input.GetKeyDown(KeyCode.Z) && lastFoot != 1)
-        {
-           // lastFoot = 1;
-          //  Events.OnKeyPressed("Z");
-        }
-        else if (Input.GetKeyDown(KeyCode.X) && lastFoot != 2)
-        {
-            lastFoot = 2;
-          //  Events.OnKeyPressed("X");
-        }
+
+        if (Game.Instance.state == Game.states.INTRO)
+            return;
+
         Vector2 mousePos = Input.mousePosition;
         mousePos.x -= Screen.width / 2;
         mousePos.y -= Screen.height / 2;

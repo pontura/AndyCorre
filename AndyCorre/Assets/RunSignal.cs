@@ -30,9 +30,9 @@ public class RunSignal : MonoBehaviour
         SELECTED,
         DONE            
     }
-
     public void Init(RunSignalsManager manager, Settings.SignalData data)
     {
+        barAsset.SetActive(false);
         fieldColor = Data.Instance.settings.disparadoresColors[data.disparador_id];
         bar.color = fieldColor;
         container = transform.parent;
@@ -74,25 +74,26 @@ public class RunSignal : MonoBehaviour
         barPos.y += 1000;
         barAsset.transform.position = barPos;
     }
-    public void OnOverMultiplechoice(RunMultiplechoiceButton buttonOver)
-    {
-        if (state != states.ON)
-            return;
-        if (buttonOver == null)
-        {
-            foreach (RunMultiplechoiceButton m in multiplechoiceAll)
-                m.RollOut();
-        }
-        else
-        {
-            foreach (RunMultiplechoiceButton m in multiplechoiceAll)
-                if (m != buttonOver)
-                    m.SetOff();
-        }
-    }
+    //public void OnOverMultiplechoice(RunMultiplechoiceButton buttonOver)
+    //{
+    //    if (state != states.ON)
+    //        return;
+    //    if (buttonOver == null)
+    //    {
+    //        foreach (RunMultiplechoiceButton m in multiplechoiceAll)
+    //            m.RollOut();
+    //    }
+    //    else
+    //    {
+    //        foreach (RunMultiplechoiceButton m in multiplechoiceAll)
+    //            if (m != buttonOver)
+    //                m.SetOff();
+    //    }
+    //}
     float barTo;
     public void SetOn(int id, int total)
     {
+        barAsset.SetActive(true);
         Events.PlaySound("voices", data.audio + ".wav", false);
         Events.PlaySound("ui", "signalOn", false);
         StopAllCoroutines();

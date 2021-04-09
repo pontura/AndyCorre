@@ -18,12 +18,16 @@ public class CharacterRunningManager : MonoBehaviour
         RUN,
         STOPPED
     }
-
-    void Start()
+    private void Awake()
     {
-        maxSpeed = Data.Instance.settings.maxSpeed;
-        desaceleration = Data.Instance.settings.desaceleration;
         anim = GetComponent<Animator>();
+        anim.enabled = false;
+    }
+    public void Init()
+    {
+        anim.enabled = true;
+        maxSpeed = Data.Instance.settings.maxSpeed;
+        desaceleration = Data.Instance.settings.desaceleration;      
         
         Events.PlaySound("park", "park", true);
         Events.RunningState += RunningState;
@@ -70,6 +74,8 @@ public class CharacterRunningManager : MonoBehaviour
     }
     private void Update()
     {
+        if (Game.Instance.state == Game.states.INTRO) return;
+
         if (speed <= 0.25f)
         {
             anim.SetFloat("speed", 0);
@@ -84,8 +90,11 @@ public class CharacterRunningManager : MonoBehaviour
         pos.z += speed * Time.deltaTime;
         transform.position = pos;
     }
+    float timer;
     public void RotateHead(Vector2 orientation)
     {
+        timer += Time.deltaTime/60;
+
         Vector3 rot = cam.transform.localEulerAngles;
 
         rot.y = orientation.x;
@@ -95,7 +104,17 @@ public class CharacterRunningManager : MonoBehaviour
         else if (rot.x < -27) rot.x = -27;
         if (rot.y > 70) rot.y = 70;
         else if (rot.y < -70) rot.y = -70;
-        cam.transform.localEulerAngles = rot;
+        rot.z = 0;
+
+        if (timer < 1)
+        {
+            cam.transform.rotation = Quaternion.Lerp(cam.transform.rotation, Quaternion.Euler(rot), timer);
+            Vector3 r = cam.transform.localEulerAngles;
+            r.z = 0;
+            cam.transform.localEulerAngles = r;
+        }
+        else
+            cam.transform.localEulerAngles = rot;
 
     }
 }

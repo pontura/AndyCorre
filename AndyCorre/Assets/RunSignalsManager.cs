@@ -20,6 +20,8 @@ public class RunSignalsManager : MonoBehaviour
     public int disparadorID;
     public int signalID;
 
+    public bool allDisparadoresDone;
+
     public states state;
     public enum states
     {
@@ -42,11 +44,14 @@ public class RunSignalsManager : MonoBehaviour
     }
     private void RunningState(bool isRunning)
     {
+        if (Game.Instance.state != Game.states.RUNNING_SIGNALS)
+            return;
         if (!isRunning)
             OutOfSight();
     }
     public void Init()
     {
+        print("INIT");
         camTransform = Game.Instance.Character.cam.transform;
         viewDistance = Data.Instance.settings.viewDistance;
         nextDistance = viewDistance;
@@ -69,11 +74,17 @@ public class RunSignalsManager : MonoBehaviour
     
     void OutOfSight()
     {
+
         if (state == states.WAITING)
             actualSignal = null;
 
+        print("OutOfSight " + state);
+
         if (state != states.NONE)
+        {
+            CheckGameOver();
             RemoveAllActiveSignals();
+        }
 
         Events.ChangeCursor(CursorUI.types.SIMPLE, Color.white);
 
@@ -104,12 +115,19 @@ public class RunSignalsManager : MonoBehaviour
                         rSignal.SetOn(rSignal.data.id + 1, Data.Instance.settings.GetTotalLinesInDisparador(disparadorID));
                     else if (rSignal.data.isDisparador && state == states.NONE)
                     {
+                        
                         if (Mathf.Abs(cam_rotation) > Data.Instance.settings.rotationToActive && Mathf.Sign(cam_rotation) == Mathf.Sign(rSignal.data.pos_x))
                         {
                             rSignal.SetOn(0, Data.Instance.settings.GetTotalLinesInDisparador(disparadorID));
                             SetActiveDisparador(rSignal);
                             newDisparador = true;
                         }
+                        else
+                        {
+                            Data.Instance.settings.SetDisparadorDone(rSignal.data.disparador_id);
+                            CheckGameOver();
+                        }
+             
                     }
                 }
             }
@@ -220,15 +238,25 @@ public class RunSignalsManager : MonoBehaviour
         if(actualSignal != null)
             print(" SetNextSignal - nextDistance: " + nextDistance + " disparadorID: " + disparadorID + "    SignalID: " + signalID + " actual distance: " + actualSignal.distance + " isDisp"  + actualSignal.isDisparador + " state: " + state + " all.Count: " + all.Count + " actual text: " + actualSignal.text );
     }
+    int themeID = 0;
     void SetActiveDisparador(RunSignal rs)
     {
+        Data.Instance.settings.SetInDisparador(rs.data.disparador_id);
         timeInRama = 0;
         signalID = 0;
         state = states.DISPARADOR;        
         disparadorID = rs.data.id;
-        Events.PlaySound("music", "theme1", true);
+        if (themeID < 2)
+        {
+            Events.PlaySound("music", "theme1", true);
+        }
+        else
+        {
+            Events.PlaySound("music", "theme2", true);
+        }
+        themeID++;
         Events.ChangeVolume("music", 0);
-        Events.FadeVolume("music", 0.3f, 7);
+        Events.FadeVolume("music",1, 7);
         SetNewSignals();        
     }
     void SetNewSignals()
@@ -260,6 +288,7 @@ public class RunSignalsManager : MonoBehaviour
         }
         else
         {
+            Data.Instance.settings.SetDisparadorDone(disparadorID);
             actualSignal = sData;
             nextDistance = distance + actualSignal.distance;
             print(signalID + "NextDistance: " + nextDistance + "   distance: " + distance + " state: " + state);
@@ -267,17 +296,24 @@ public class RunSignalsManager : MonoBehaviour
     }
     void AddDisparador()
     {
+        if (allDisparadoresDone)
+            return;
         Reset();
-
         actualSignal = Data.Instance.settings.GetNextDisparador();
         if(actualSignal == null)
         {
-            Events.ChangeGameState(Game.states.AVATAR_TALK);
-            Debug.Log("GAME OVER");
+            allDisparadoresDone = true;
+           // Events.ChangeGameState(Game.states.AVATAR_TALK);
+            Debug.Log("All disparadores DONE");
             return;
         }
         nextDistance = distance + actualSignal.distance + viewDistance;
         print("sale disparadorID: " + actualSignal.id + "  nextDistance: " + nextDistance + "   distance: " + distance);
+    }
+    void CheckGameOver()
+    {
+        if(Data.Instance.settings.AllDisparadoresDone())
+            Events.ChangeGameState(Game.states.AVATAR_TALK);
     }
     void RemoveAllActiveSignals()
     {
@@ -291,7 +327,7 @@ public class RunSignalsManager : MonoBehaviour
     }
     List<RunSignal> GetAllSignalsOfDisparador(int _disparadorID, bool notThisDisparador = false)
     {
-        print("remove others,  but: " + _disparadorID);
+       // print("remove others,  but: " + _disparadorID);
         List<RunSignal> arr = new List<RunSignal>();
         foreach (RunSignal rs in all)
         {
