@@ -1112,7 +1112,7 @@ MonoBehaviour:
   speed_to_lights: 0
   score: 0
   uiManager: {fileID: 596388437}
-  initState: 2
+  initState: 1
   state: 0
   darkValue: 0
   totalScores: 0
@@ -1178,8 +1178,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 705507994}
   maxLight: 2
-  minLightValue: 0.3
-  speed: 0.25
+  minLightValue: 0.6
+  speed: 0.15
 --- !u!114 &547028194
 MonoBehaviour:
   m_ObjectHideFlags: 0
