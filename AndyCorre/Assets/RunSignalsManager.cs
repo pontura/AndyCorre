@@ -74,11 +74,8 @@ public class RunSignalsManager : MonoBehaviour
     
     void OutOfSight()
     {
-
         if (state == states.WAITING)
             actualSignal = null;
-
-        print("OutOfSight " + state);
 
         if (state != states.NONE)
         {

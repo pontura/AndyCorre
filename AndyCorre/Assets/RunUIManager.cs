@@ -55,6 +55,7 @@ public class RunUIManager : MonoBehaviour
     }
     void RunningState(bool isOn)
     {
+        print("_________RunningState " + isOn + Game.Instance.state);
         if (Game.Instance.state == Game.states.READY)
             return;
         if (isOn)
@@ -167,11 +168,9 @@ public class RunUIManager : MonoBehaviour
         rot.z = rot_z;
         arrow.transform.localEulerAngles = -rot;
 
-
-        if (character.speed > 9.2f && state == states.RUNNING)
+       if (character.speed > 8.9f && state == states.RUNNING)
         {
             Events.RunningState(false);
-
         }
         else if (state == states.RUNNING)
         {

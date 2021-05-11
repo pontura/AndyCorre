@@ -9,6 +9,8 @@ public class Intro : MonoBehaviour
     public Text field;
     public Animation anim;
     public GameObject panel;
+    public GameObject placa;
+
     public string[] texts;
     int id;
     float timeStart;
@@ -24,9 +26,14 @@ public class Intro : MonoBehaviour
     {
         Events.PlaySound("park", "park", true);
         Events.FadeVolumeFromTo("park", 0, 0.7f, 30);
-        Invoke("NextText", 2);
+        placa.SetActive(true);
         cam_anim.Stop();
         panel.SetActive(true);
+    }
+    public void StartTexts()
+    {
+        placa.SetActive(false);
+        Invoke("NextText", 2);
     }
     void OnKeyPressed(string key)
     {
