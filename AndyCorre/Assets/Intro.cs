@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Intro : MonoBehaviour
 {
+    bool canClick;
     public Animation cam_anim;
     public Text field;
     public Animation anim;
@@ -14,9 +15,20 @@ public class Intro : MonoBehaviour
     public string[] texts;
     int id;
     float timeStart;
+
     void Start()
     {
+        canClick = false;
+        panel.SetActive(true);
+        anim.Play("intro");
+        Invoke("Delayed", 7);
+        Events.ChangeCursor(CursorUI.types.NONE, Color.black);
+    }
+    void Delayed()
+    {
+        Events.ChangeCursor(CursorUI.types.SIMPLE, Color.black);
         Events.OnKeyPressed += OnKeyPressed;
+        canClick = true;
     }
     void OnDestroy()
     {
@@ -41,6 +53,7 @@ public class Intro : MonoBehaviour
     }
     public void NextText()
     {
+        if (!canClick) return;
         CancelInvoke();
         if (id >= texts.Length)
         {

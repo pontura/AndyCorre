@@ -14,7 +14,8 @@ public class CursorUI : MonoBehaviour
     {
         SIMPLE,
         READ,
-        CLICK
+        CLICK,
+        NONE
     }
     void Start()
     {
@@ -32,7 +33,10 @@ public class CursorUI : MonoBehaviour
     types lastType;
     void ChangeCursor(types type, Color color)
     {
-
+        if (type == types.NONE)
+            image.enabled = false;
+        else
+            image.enabled = true;
         color.a = 0.75f;
         image.color = color;
         if (type == lastType)
